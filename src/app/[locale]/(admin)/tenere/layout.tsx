@@ -12,6 +12,7 @@ import {
   Mail,
   MessageSquare,
   Quote,
+  SlidersHorizontal,
   Tags,
   UserCog,
   Users,
@@ -118,6 +119,11 @@ export default async function AdminLayout({
       href: "/tenere/users",
       label: t("nav.users"),
       icon: <UserCog className="size-4" />,
+    },
+    {
+      href: "/tenere/settings",
+      label: "Réglages",
+      icon: <SlidersHorizontal className="size-4" />,
     },
   ];
 

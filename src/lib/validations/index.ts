@@ -126,6 +126,15 @@ export const testimonialAdminSchema = z.object({
 });
 export type TestimonialAdminInput = z.infer<typeof testimonialAdminSchema>;
 
+/** Admin: homepage impact key-figures (stored as impact.* settings). */
+export const impactStatsSchema = z.object({
+  youth: z.coerce.number().int().min(0),
+  programs: z.coerce.number().int().min(0),
+  communities: z.coerce.number().int().min(0),
+  countries: z.coerce.number().int().min(0),
+});
+export type ImpactStatsInput = z.infer<typeof impactStatsSchema>;
+
 /** Admin: create/update a team member (leadership). */
 export const teamMemberAdminSchema = z.object({
   name: z.string().min(1).max(120),
