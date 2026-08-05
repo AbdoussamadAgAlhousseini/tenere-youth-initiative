@@ -107,7 +107,8 @@
       "Bash(npx -y vercel@latest inspect tenere-youth-initiative-ltfs90b01-akal1.vercel.app)",
       "Bash(npx -y vercel@latest inspect --logs tenere-youth-initiative-ltfs90b01-akal1.vercel.app)",
       "Bash(git commit -q -m ' *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(curl -s https://www.tenere-youth.org/fr/sign-in)"
     ]
   }
 }
