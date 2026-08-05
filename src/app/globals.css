@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Surfaces — warm sand-tinted neutrals */
+    --background: 40 33% 98%;
+    --foreground: 24 10% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 24 10% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 24 10% 10%;
+
+    /* Primary — oasis green */
+    --primary: 152 46% 34%;
+    --primary-foreground: 40 33% 98%;
+
+    /* Secondary — warm sand */
+    --secondary: 38 44% 91%;
+    --secondary-foreground: 24 30% 20%;
+
+    --muted: 38 30% 94%;
+    --muted-foreground: 24 6% 40%;
+
+    /* Accent — terracotta earth */
+    --accent: 30 73% 41%;
+    --accent-foreground: 40 33% 98%;
+
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 40 33% 98%;
+
+    --border: 34 25% 86%;
+    --input: 34 25% 86%;
+    --ring: 152 46% 34%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 24 12% 7%;
+    --foreground: 40 20% 94%;
+
+    --card: 24 12% 10%;
+    --card-foreground: 40 20% 94%;
+
+    --popover: 24 12% 10%;
+    --popover-foreground: 40 20% 94%;
+
+    --primary: 152 40% 48%;
+    --primary-foreground: 24 12% 7%;
+
+    --secondary: 24 10% 16%;
+    --secondary-foreground: 40 20% 94%;
+
+    --muted: 24 8% 16%;
+    --muted-foreground: 40 8% 62%;
+
+    --accent: 30 60% 52%;
+    --accent-foreground: 24 12% 7%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 40 20% 94%;
+
+    --border: 24 8% 20%;
+    --input: 24 8% 22%;
+    --ring: 152 40% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif tracking-tight;
+    text-wrap: balance;
+  }
+  ::selection {
+    @apply bg-primary/20;
+  }
+}
+
+@layer utilities {
+  /* Respect reduced-motion preferences globally (WCAG 2.2). */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  .container-tight {
+    @apply mx-auto w-full max-w-3xl px-6;
+  }
+}

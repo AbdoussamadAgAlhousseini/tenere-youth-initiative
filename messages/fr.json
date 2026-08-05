@@ -1,0 +1,353 @@
+{
+  "metadata": {
+    "title": "Tenere Youth Initiative",
+    "titleTemplate": "%s · Tenere Youth Initiative",
+    "description": "Une organisation dirigée par des jeunes qui renforce le pouvoir des communautés pastorales et nomades à travers le leadership, l'éducation et l'action climatique.",
+    "motto": "Le désert n'est pas vide. Personne ne traverse le Ténéré seul."
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "programs": "Programmes",
+    "news": "Actualités",
+    "resources": "Ressources",
+    "events": "Événements",
+    "gallery": "Galerie",
+    "contact": "Contact",
+    "donate": "Faire un don",
+    "volunteer": "Bénévolat",
+    "membership": "Adhésion",
+    "signIn": "Connexion",
+    "dashboard": "Espace membre",
+    "menu": "Menu",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "skipToContent": "Aller au contenu principal"
+  },
+  "common": {
+    "learnMore": "En savoir plus",
+    "readMore": "Lire la suite",
+    "viewAll": "Voir tout",
+    "getInvolved": "S'engager",
+    "loading": "Chargement…",
+    "toggleTheme": "Changer de thème",
+    "changeLanguage": "Changer de langue",
+    "search": "Rechercher"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Organisation dirigée par des jeunes",
+      "title": "Renforcer le pouvoir des jeunes des communautés pastorales et nomades",
+      "subtitle": "Nous formons une génération de jeunes leaders capables de transformer leurs communautés — par le leadership, l'éducation, le climat et le numérique.",
+      "ctaPrimary": "Rejoindre le mouvement",
+      "ctaSecondary": "Découvrir nos programmes"
+    },
+    "mission": {
+      "eyebrow": "Notre mission",
+      "title": "Le désert n'est pas vide",
+      "body": "Tenere Youth Initiative accompagne les jeunes des zones pastorales et nomades pour qu'ils deviennent acteurs du changement dans leurs territoires : défense des droits, savoirs traditionnels, innovation et action climatique."
+    },
+    "vision": {
+      "eyebrow": "Notre vision",
+      "title": "Une génération de leaders",
+      "body": "Créer une génération de jeunes leaders des communautés pastorales et nomades capables de transformer durablement leurs communautés."
+    },
+    "impact": {
+      "title": "Notre impact en chiffres",
+      "youth": "Jeunes accompagnés",
+      "programs": "Programmes actifs",
+      "communities": "Communautés partenaires",
+      "countries": "Pays d'intervention"
+    },
+    "programs": {
+      "title": "Nos programmes",
+      "subtitle": "Des parcours conçus avec et pour les communautés pastorales et nomades."
+    },
+    "news": {
+      "title": "Dernières actualités",
+      "subtitle": "Suivez nos actions sur le terrain et nos prises de parole."
+    },
+    "testimonials": {
+      "title": "Ils portent le changement"
+    },
+    "partners": {
+      "title": "Nos partenaires"
+    },
+    "cta": {
+      "title": "Personne ne traverse le Ténéré seul",
+      "body": "Votre soutien permet à des jeunes de prendre la parole, de se former et de transformer leur avenir.",
+      "primary": "Faire un don",
+      "secondary": "Devenir bénévole"
+    },
+    "newsletter": {
+      "title": "Restons en lien",
+      "body": "Recevez nos actualités et opportunités, une fois par mois. Sans spam.",
+      "placeholder": "Votre adresse e-mail",
+      "submit": "S'abonner",
+      "consent": "J'accepte de recevoir la newsletter et j'ai lu la politique de confidentialité."
+    }
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "body": "La page que vous cherchez n'existe pas ou a été déplacée. Retrouvons votre chemin dans le désert.",
+    "home": "Retour à l'accueil",
+    "programs": "Voir les programmes"
+  },
+  "backToTop": "Retour en haut",
+  "breadcrumb": "Fil d'Ariane",
+  "admin": {
+    "title": "Administration",
+    "welcome": "Vue d'ensemble de l'activité de l'organisation.",
+    "empty": "Aucune donnée pour le moment.",
+    "nav": {
+      "dashboard": "Tableau de bord",
+      "articles": "Articles",
+      "events": "Événements",
+      "volunteers": "Bénévoles",
+      "subscribers": "Newsletter",
+      "messages": "Messages",
+      "donations": "Dons",
+      "users": "Utilisateurs"
+    },
+    "cols": {
+      "name": "Nom",
+      "email": "E-mail",
+      "date": "Date",
+      "status": "Statut",
+      "subject": "Sujet",
+      "title": "Titre",
+      "type": "Type",
+      "role": "Rôle",
+      "expertise": "Expertise",
+      "amount": "Montant",
+      "locale": "Langue",
+      "confirmed": "Confirmé"
+    }
+  },
+  "member": {
+    "title": "Espace membre",
+    "welcome": "Bienvenue",
+    "role": "Rôle",
+    "signOut": "Se déconnecter",
+    "nav": {
+      "dashboard": "Tableau de bord",
+      "profile": "Profil",
+      "documents": "Documents",
+      "messages": "Messages",
+      "notifications": "Notifications"
+    },
+    "empty": "Rien à afficher pour l'instant.",
+    "profileInfo": "Informations du profil"
+  },
+  "leadership": {
+    "eyebrow": "Notre équipe dirigeante",
+    "title": "Un leadership porté par des femmes",
+    "statement": "À Tenere Youth Initiative, tous les postes clés sont occupés par des femmes. Ce choix incarne notre conviction : l'égalité se construit en confiant aux femmes le pouvoir de décider, de diriger et d'inspirer.",
+    "badge": "100 % des postes clés dirigés par des femmes",
+    "bannerTitle": "Une organisation dirigée par des femmes",
+    "bannerBody": "Tous les postes clés de Tenere Youth Initiative sont occupés par des femmes — une gouvernance qui incarne l'égalité que nous défendons.",
+    "bannerCta": "Rencontrer l'équipe"
+  },
+  "pages": {
+    "programs": {
+      "eyebrow": "Nos programmes",
+      "title": "Des programmes ancrés dans les communautés",
+      "intro": "Chaque programme est conçu avec et pour les jeunes des communautés pastorales et nomades.",
+      "objectives": "Ce que nous faisons",
+      "relatedEvents": "Événements liés",
+      "ctaTitle": "Envie de vous impliquer dans ce programme ?",
+      "ctaBody": "Rejoignez-nous comme bénévole ou soutenez nos actions.",
+      "backToPrograms": "Tous les programmes"
+    },
+    "news": {
+      "eyebrow": "Actualités",
+      "title": "Nos actions et nos voix",
+      "intro": "Histoires de terrain, plaidoyer et nouvelles du mouvement.",
+      "searchPlaceholder": "Rechercher un article…",
+      "allCategories": "Toutes les catégories",
+      "noResults": "Aucun article ne correspond à votre recherche.",
+      "by": "Par",
+      "readTime": "min de lecture",
+      "related": "À lire aussi",
+      "backToNews": "Toutes les actualités",
+      "share": "Partager"
+    },
+    "events": {
+      "eyebrow": "Événements",
+      "title": "Rencontres, forums et formations",
+      "intro": "Rejoignez nos webinaires, forums et ateliers à travers le Sahel.",
+      "upcoming": "À venir",
+      "online": "En ligne",
+      "register": "S'inscrire",
+      "when": "Date",
+      "where": "Lieu",
+      "backToEvents": "Tous les événements",
+      "noEvents": "Aucun événement à venir pour le moment."
+    },
+    "resources": {
+      "eyebrow": "Ressources",
+      "title": "Rapports, guides et publications",
+      "intro": "Des ressources en libre accès pour agir et s'inspirer.",
+      "download": "Télécharger",
+      "types": {
+        "all": "Tout",
+        "REPORT": "Rapports",
+        "GUIDE": "Guides",
+        "TOOLKIT": "Boîtes à outils",
+        "PUBLICATION": "Publications"
+      }
+    },
+    "gallery": {
+      "eyebrow": "Galerie",
+      "title": "Le mouvement en images",
+      "intro": "Regards sur nos actions, nos rencontres et nos communautés.",
+      "all": "Tout"
+    },
+    "donate": {
+      "eyebrow": "Faire un don",
+      "title": "Votre don change des vies",
+      "intro": "Chaque contribution permet à des jeunes de se former, de s'exprimer et d'agir.",
+      "amount": "Montant",
+      "custom": "Autre montant",
+      "frequency": "Fréquence",
+      "once": "Une fois",
+      "monthly": "Mensuel",
+      "yearly": "Annuel",
+      "donorName": "Votre nom (facultatif)",
+      "email": "E-mail (facultatif)",
+      "message": "Message (facultatif)",
+      "submit": "Faire un don de",
+      "processing": "Traitement…",
+      "success": "Merci pour votre générosité ! Votre soutien compte énormément.",
+      "error": "Une erreur est survenue. Réessayez.",
+      "note": "Paiement en ligne bientôt disponible. Ce formulaire enregistre votre intention de don ; nous vous contacterons pour finaliser.",
+      "impactTitle": "Votre impact",
+      "impact": {
+        "a": "forme un jeune au leadership pendant un mois",
+        "b": "équipe une école mobile en fournitures",
+        "c": "finance un atelier numérique pour dix jeunes"
+      }
+    },
+    "volunteer": {
+      "eyebrow": "Bénévolat",
+      "title": "Donnez de votre temps, changez des vies",
+      "intro": "Rejoignez une communauté de bénévoles engagés pour la jeunesse pastorale.",
+      "fullName": "Nom complet",
+      "email": "Adresse e-mail",
+      "phone": "Téléphone (facultatif)",
+      "expertise": "Vos domaines d'expertise",
+      "availability": "Vos disponibilités (facultatif)",
+      "motivation": "Votre motivation",
+      "submit": "Envoyer ma candidature",
+      "sending": "Envoi…",
+      "success": "Merci ! Votre candidature a bien été reçue. Nous revenons vers vous très vite.",
+      "error": "Une erreur est survenue. Réessayez.",
+      "selectExpertise": "Sélectionnez au moins un domaine."
+    },
+    "membership": {
+      "eyebrow": "Adhésion",
+      "title": "Devenez membre du mouvement",
+      "intro": "Rejoignez Tenere Youth Initiative et participez à la transformation des communautés.",
+      "benefitsTitle": "Vos avantages",
+      "benefits": {
+        "a": "Accès à notre réseau de jeunes leaders",
+        "b": "Invitations aux formations et événements",
+        "c": "Ressources et opportunités exclusives",
+        "d": "Une voix dans la vie de l'organisation"
+      },
+      "cta": "Adhérer avec Google",
+      "note": "L'adhésion se fait via un compte sécurisé."
+    },
+    "legal": {
+      "privacyTitle": "Politique de confidentialité",
+      "termsTitle": "Conditions d'utilisation",
+      "intro": "Cette page présente un contenu de démonstration à adapter avant la mise en ligne."
+    }
+  },
+  "programThemes": {
+    "LEADERSHIP": "Leadership",
+    "EDUCATION": "Éducation",
+    "PASTORALISM": "Pastoralisme",
+    "CLIMATE": "Climat",
+    "DIGITAL": "Numérique",
+    "WOMEN": "Femmes & filles",
+    "ENTREPRENEURSHIP": "Entrepreneuriat",
+    "ADVOCACY": "Plaidoyer"
+  },
+  "about": {
+    "eyebrow": "À propos",
+    "title": "Notre histoire, notre engagement",
+    "intro": "Tenere Youth Initiative est née de la conviction que les jeunes des communautés pastorales et nomades portent en eux les solutions de demain.",
+    "history": {
+      "title": "Notre histoire",
+      "body": "Fondée par de jeunes leaders issus des zones pastorales du Sahel, l'organisation a grandi autour d'une idée simple : personne ne connaît mieux les défis d'un territoire que celles et ceux qui y vivent. De premiers ateliers communautaires à un réseau régional, nous avons construit pas à pas un mouvement de jeunesse enraciné et ambitieux.",
+      "milestones": {
+        "founding": "Création du collectif par de jeunes bénévoles pastoraux",
+        "programs": "Lancement des premiers programmes d'éducation et de leadership",
+        "network": "Extension à plusieurs pays du Sahel",
+        "today": "Un réseau régional au service des communautés"
+      }
+    },
+    "vision": {
+      "title": "Notre vision",
+      "body": "Créer une génération de jeunes leaders des communautés pastorales et nomades capables de transformer durablement leurs communautés."
+    },
+    "mission": {
+      "title": "Notre mission",
+      "body": "Renforcer le pouvoir des jeunes des communautés pastorales et nomades par l'éducation, le leadership, l'innovation et le plaidoyer."
+    },
+    "values": {
+      "title": "Nos valeurs",
+      "items": {
+        "rooted": { "title": "Enracinement", "body": "Nous partons des savoirs et des réalités des communautés." },
+        "youth": { "title": "Jeunesse", "body": "Nous plaçons les jeunes au cœur de la décision et de l'action." },
+        "solidarity": { "title": "Solidarité", "body": "Personne ne traverse le Ténéré seul : nous avançons ensemble." },
+        "sustainability": { "title": "Durabilité", "body": "Nous agissons pour l'environnement et les générations futures." }
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Écrivons l'avenir ensemble",
+    "intro": "Une question, un partenariat, une envie de vous engager ? Écrivez-nous.",
+    "form": {
+      "name": "Nom complet",
+      "email": "Adresse e-mail",
+      "subject": "Sujet",
+      "message": "Message",
+      "submit": "Envoyer le message",
+      "sending": "Envoi…",
+      "success": "Merci ! Votre message a bien été envoyé.",
+      "error": "Une erreur est survenue. Réessayez.",
+      "rateLimited": "Trop de tentatives. Patientez un instant."
+    },
+    "info": {
+      "title": "Nos coordonnées",
+      "emailLabel": "E-mail",
+      "followLabel": "Suivez-nous"
+    }
+  },
+  "newsletterForm": {
+    "success": "Merci ! Vérifiez votre boîte mail pour confirmer.",
+    "error": "Une erreur est survenue. Réessayez.",
+    "invalid": "Adresse e-mail invalide ou consentement manquant.",
+    "rateLimited": "Trop de tentatives. Patientez un instant."
+  },
+  "auth": {
+    "title": "Connexion",
+    "subtitle": "Accédez à votre espace membre Tenere Youth Initiative.",
+    "google": "Continuer avec Google",
+    "legal": "En continuant, vous acceptez nos conditions et notre",
+    "privacy": "politique de confidentialité"
+  },
+  "footer": {
+    "tagline": "Renforcer le pouvoir des jeunes communautés pastorales et nomades.",
+    "explore": "Explorer",
+    "getInvolved": "S'engager",
+    "legal": "Informations",
+    "privacy": "Confidentialité",
+    "terms": "Conditions d'utilisation",
+    "rights": "Tous droits réservés.",
+    "followUs": "Suivez-nous"
+  }
+}

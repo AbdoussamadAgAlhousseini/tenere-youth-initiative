@@ -1,0 +1,353 @@
+{
+  "metadata": {
+    "title": "Tenere Youth Initiative",
+    "titleTemplate": "%s · Tenere Youth Initiative",
+    "description": "A youth-led organization empowering pastoralist and nomadic communities through leadership, education and climate action.",
+    "motto": "The desert is not empty. No one crosses the Ténéré alone."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "programs": "Programs",
+    "news": "News",
+    "resources": "Resources",
+    "events": "Events",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "donate": "Donate",
+    "volunteer": "Volunteer",
+    "membership": "Membership",
+    "signIn": "Sign in",
+    "dashboard": "Member area",
+    "menu": "Menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "skipToContent": "Skip to main content"
+  },
+  "common": {
+    "learnMore": "Learn more",
+    "readMore": "Read more",
+    "viewAll": "View all",
+    "getInvolved": "Get involved",
+    "loading": "Loading…",
+    "toggleTheme": "Toggle theme",
+    "changeLanguage": "Change language",
+    "search": "Search"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "A youth-led organization",
+      "title": "Empowering young people of pastoralist and nomadic communities",
+      "subtitle": "We are raising a generation of young leaders able to transform their communities — through leadership, education, climate and digital.",
+      "ctaPrimary": "Join the movement",
+      "ctaSecondary": "Explore our programs"
+    },
+    "mission": {
+      "eyebrow": "Our mission",
+      "title": "The desert is not empty",
+      "body": "Tenere Youth Initiative supports young people from pastoralist and nomadic areas to become agents of change in their territories: defending rights, traditional knowledge, innovation and climate action."
+    },
+    "vision": {
+      "eyebrow": "Our vision",
+      "title": "A generation of leaders",
+      "body": "To create a generation of young leaders from pastoralist and nomadic communities able to transform their communities for the long term."
+    },
+    "impact": {
+      "title": "Our impact in numbers",
+      "youth": "Young people supported",
+      "programs": "Active programs",
+      "communities": "Partner communities",
+      "countries": "Countries of action"
+    },
+    "programs": {
+      "title": "Our programs",
+      "subtitle": "Journeys designed with and for pastoralist and nomadic communities."
+    },
+    "news": {
+      "title": "Latest news",
+      "subtitle": "Follow our work in the field and our advocacy."
+    },
+    "testimonials": {
+      "title": "They carry the change"
+    },
+    "partners": {
+      "title": "Our partners"
+    },
+    "cta": {
+      "title": "No one crosses the Ténéré alone",
+      "body": "Your support helps young people speak up, learn and transform their future.",
+      "primary": "Donate",
+      "secondary": "Become a volunteer"
+    },
+    "newsletter": {
+      "title": "Stay connected",
+      "body": "Get our news and opportunities, once a month. No spam.",
+      "placeholder": "Your email address",
+      "submit": "Subscribe",
+      "consent": "I agree to receive the newsletter and have read the privacy policy."
+    }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you're looking for doesn't exist or has moved. Let's find your way back across the desert.",
+    "home": "Back to home",
+    "programs": "Browse programs"
+  },
+  "backToTop": "Back to top",
+  "breadcrumb": "Breadcrumb",
+  "admin": {
+    "title": "Administration",
+    "welcome": "An overview of the organization's activity.",
+    "empty": "No data yet.",
+    "nav": {
+      "dashboard": "Dashboard",
+      "articles": "Articles",
+      "events": "Events",
+      "volunteers": "Volunteers",
+      "subscribers": "Newsletter",
+      "messages": "Messages",
+      "donations": "Donations",
+      "users": "Users"
+    },
+    "cols": {
+      "name": "Name",
+      "email": "Email",
+      "date": "Date",
+      "status": "Status",
+      "subject": "Subject",
+      "title": "Title",
+      "type": "Type",
+      "role": "Role",
+      "expertise": "Expertise",
+      "amount": "Amount",
+      "locale": "Language",
+      "confirmed": "Confirmed"
+    }
+  },
+  "member": {
+    "title": "Member area",
+    "welcome": "Welcome",
+    "role": "Role",
+    "signOut": "Sign out",
+    "nav": {
+      "dashboard": "Dashboard",
+      "profile": "Profile",
+      "documents": "Documents",
+      "messages": "Messages",
+      "notifications": "Notifications"
+    },
+    "empty": "Nothing to show yet.",
+    "profileInfo": "Profile information"
+  },
+  "leadership": {
+    "eyebrow": "Our leadership team",
+    "title": "Leadership led by women",
+    "statement": "At Tenere Youth Initiative, every key position is held by a woman. This choice embodies our conviction: equality is built by entrusting women with the power to decide, to lead and to inspire.",
+    "badge": "100% of key positions held by women",
+    "bannerTitle": "A women-led organization",
+    "bannerBody": "Every key position at Tenere Youth Initiative is held by a woman — governance that embodies the equality we champion.",
+    "bannerCta": "Meet the team"
+  },
+  "pages": {
+    "programs": {
+      "eyebrow": "Our programs",
+      "title": "Programs rooted in communities",
+      "intro": "Each program is designed with and for young people of pastoralist and nomadic communities.",
+      "objectives": "What we do",
+      "relatedEvents": "Related events",
+      "ctaTitle": "Want to get involved in this program?",
+      "ctaBody": "Join us as a volunteer or support our work.",
+      "backToPrograms": "All programs"
+    },
+    "news": {
+      "eyebrow": "News",
+      "title": "Our work and our voices",
+      "intro": "Field stories, advocacy and news from the movement.",
+      "searchPlaceholder": "Search an article…",
+      "allCategories": "All categories",
+      "noResults": "No article matches your search.",
+      "by": "By",
+      "readTime": "min read",
+      "related": "Read next",
+      "backToNews": "All news",
+      "share": "Share"
+    },
+    "events": {
+      "eyebrow": "Events",
+      "title": "Gatherings, forums and training",
+      "intro": "Join our webinars, forums and workshops across the Sahel.",
+      "upcoming": "Upcoming",
+      "online": "Online",
+      "register": "Register",
+      "when": "Date",
+      "where": "Location",
+      "backToEvents": "All events",
+      "noEvents": "No upcoming events at the moment."
+    },
+    "resources": {
+      "eyebrow": "Resources",
+      "title": "Reports, guides and publications",
+      "intro": "Open-access resources to act and get inspired.",
+      "download": "Download",
+      "types": {
+        "all": "All",
+        "REPORT": "Reports",
+        "GUIDE": "Guides",
+        "TOOLKIT": "Toolkits",
+        "PUBLICATION": "Publications"
+      }
+    },
+    "gallery": {
+      "eyebrow": "Gallery",
+      "title": "The movement in pictures",
+      "intro": "Glimpses of our work, our gatherings and our communities.",
+      "all": "All"
+    },
+    "donate": {
+      "eyebrow": "Donate",
+      "title": "Your gift changes lives",
+      "intro": "Every contribution helps young people learn, speak up and act.",
+      "amount": "Amount",
+      "custom": "Other amount",
+      "frequency": "Frequency",
+      "once": "One-time",
+      "monthly": "Monthly",
+      "yearly": "Yearly",
+      "donorName": "Your name (optional)",
+      "email": "Email (optional)",
+      "message": "Message (optional)",
+      "submit": "Donate",
+      "processing": "Processing…",
+      "success": "Thank you for your generosity! Your support means the world.",
+      "error": "Something went wrong. Please try again.",
+      "note": "Online payment coming soon. This form records your donation intent; we'll contact you to complete it.",
+      "impactTitle": "Your impact",
+      "impact": {
+        "a": "trains a young person in leadership for a month",
+        "b": "equips a mobile school with supplies",
+        "c": "funds a digital workshop for ten young people"
+      }
+    },
+    "volunteer": {
+      "eyebrow": "Volunteer",
+      "title": "Give your time, change lives",
+      "intro": "Join a community of volunteers committed to pastoralist youth.",
+      "fullName": "Full name",
+      "email": "Email address",
+      "phone": "Phone (optional)",
+      "expertise": "Your areas of expertise",
+      "availability": "Your availability (optional)",
+      "motivation": "Your motivation",
+      "submit": "Send my application",
+      "sending": "Sending…",
+      "success": "Thank you! Your application has been received. We'll get back to you soon.",
+      "error": "Something went wrong. Please try again.",
+      "selectExpertise": "Select at least one area."
+    },
+    "membership": {
+      "eyebrow": "Membership",
+      "title": "Become a member of the movement",
+      "intro": "Join Tenere Youth Initiative and take part in transforming communities.",
+      "benefitsTitle": "Your benefits",
+      "benefits": {
+        "a": "Access to our network of young leaders",
+        "b": "Invitations to trainings and events",
+        "c": "Exclusive resources and opportunities",
+        "d": "A voice in the life of the organization"
+      },
+      "cta": "Join with Google",
+      "note": "Membership is handled via a secure account."
+    },
+    "legal": {
+      "privacyTitle": "Privacy policy",
+      "termsTitle": "Terms of use",
+      "intro": "This page shows placeholder content to adapt before going live."
+    }
+  },
+  "programThemes": {
+    "LEADERSHIP": "Leadership",
+    "EDUCATION": "Education",
+    "PASTORALISM": "Pastoralism",
+    "CLIMATE": "Climate",
+    "DIGITAL": "Digital",
+    "WOMEN": "Women & Girls",
+    "ENTREPRENEURSHIP": "Entrepreneurship",
+    "ADVOCACY": "Advocacy"
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "Our story, our commitment",
+    "intro": "Tenere Youth Initiative was born from the conviction that young people of pastoralist and nomadic communities carry the solutions of tomorrow.",
+    "history": {
+      "title": "Our story",
+      "body": "Founded by young leaders from the Sahel's pastoral areas, the organization grew around a simple idea: no one understands a territory's challenges better than those who live there. From the first community workshops to a regional network, we have built, step by step, a rooted and ambitious youth movement.",
+      "milestones": {
+        "founding": "The collective is created by young pastoralist volunteers",
+        "programs": "First education and leadership programs launched",
+        "network": "Expansion across several Sahel countries",
+        "today": "A regional network serving communities"
+      }
+    },
+    "vision": {
+      "title": "Our vision",
+      "body": "To create a generation of young leaders from pastoralist and nomadic communities able to transform their communities for the long term."
+    },
+    "mission": {
+      "title": "Our mission",
+      "body": "To empower young people of pastoralist and nomadic communities through education, leadership, innovation and advocacy."
+    },
+    "values": {
+      "title": "Our values",
+      "items": {
+        "rooted": { "title": "Rootedness", "body": "We start from the knowledge and realities of communities." },
+        "youth": { "title": "Youth", "body": "We place young people at the heart of decisions and action." },
+        "solidarity": { "title": "Solidarity", "body": "No one crosses the Ténéré alone: we move forward together." },
+        "sustainability": { "title": "Sustainability", "body": "We act for the environment and future generations." }
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let's write the future together",
+    "intro": "A question, a partnership, a wish to get involved? Write to us.",
+    "form": {
+      "name": "Full name",
+      "email": "Email address",
+      "subject": "Subject",
+      "message": "Message",
+      "submit": "Send message",
+      "sending": "Sending…",
+      "success": "Thank you! Your message has been sent.",
+      "error": "Something went wrong. Please try again.",
+      "rateLimited": "Too many attempts. Please wait a moment."
+    },
+    "info": {
+      "title": "Our details",
+      "emailLabel": "Email",
+      "followLabel": "Follow us"
+    }
+  },
+  "newsletterForm": {
+    "success": "Thank you! Check your inbox to confirm.",
+    "error": "Something went wrong. Please try again.",
+    "invalid": "Invalid email or missing consent.",
+    "rateLimited": "Too many attempts. Please wait a moment."
+  },
+  "auth": {
+    "title": "Sign in",
+    "subtitle": "Access your Tenere Youth Initiative member area.",
+    "google": "Continue with Google",
+    "legal": "By continuing, you agree to our terms and our",
+    "privacy": "privacy policy"
+  },
+  "footer": {
+    "tagline": "Empowering young people of pastoralist and nomadic communities.",
+    "explore": "Explore",
+    "getInvolved": "Get involved",
+    "legal": "Information",
+    "privacy": "Privacy",
+    "terms": "Terms of use",
+    "rights": "All rights reserved.",
+    "followUs": "Follow us"
+  }
+}

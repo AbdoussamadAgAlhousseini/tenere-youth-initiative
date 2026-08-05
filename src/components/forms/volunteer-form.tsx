@@ -1,0 +1,106 @@
+"use client";
+
+import { useActionState } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { CheckCircle2 } from "lucide-react";
+
+import { submitVolunteer } from "@/server/actions/volunteer";
+import type { ActionState } from "@/server/actions/newsletter";
+import { programThemes } from "@/lib/validations";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+
+const initialState: ActionState = { status: "idle" };
+
+export function VolunteerForm() {
+  const locale = useLocale();
+  const t = useTranslations("pages.volunteer");
+  const themes = useTranslations("programThemes");
+  const [state, formAction, pending] = useActionState(
+    submitVolunteer,
+    initialState,
+  );
+
+  if (state.status === "success") {
+    return (
+      <div className="border-primary/30 bg-primary/5 flex flex-col items-center gap-3 rounded-2xl border p-10 text-center">
+        <CheckCircle2 className="text-primary size-12" />
+        <p className="text-lg font-medium">{t("success")}</p>
+      </div>
+    );
+  }
+
+  return (
+    <form
+      action={formAction}
+      className="bg-card space-y-5 rounded-2xl border p-6 shadow-sm sm:p-8"
+      noValidate
+    >
+      <input type="hidden" name="locale" value={locale} />
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div className="space-y-2">
+          <Label htmlFor="fullName">{t("fullName")}</Label>
+          <Input id="fullName" name="fullName" required autoComplete="name" />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="vol-email">{t("email")}</Label>
+          <Input
+            id="vol-email"
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+          />
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="phone">{t("phone")}</Label>
+        <Input id="phone" name="phone" type="tel" autoComplete="tel" />
+      </div>
+
+      <fieldset className="space-y-2">
+        <legend className="text-sm font-medium">{t("expertise")}</legend>
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+          {programThemes.map((th) => (
+            <label
+              key={th}
+              className="hover:bg-secondary flex cursor-pointer items-center gap-2 rounded-md border p-2.5 text-sm"
+            >
+              <input
+                type="checkbox"
+                name="expertise"
+                value={th}
+                className="accent-primary size-4"
+              />
+              {themes(th)}
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <div className="space-y-2">
+        <Label htmlFor="availability">{t("availability")}</Label>
+        <Input id="availability" name="availability" />
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="motivation">{t("motivation")}</Label>
+        <Textarea id="motivation" name="motivation" required rows={5} />
+      </div>
+
+      {state.status === "error" && (
+        <p role="alert" className="text-destructive text-sm">
+          {state.message === "invalid" ? t("selectExpertise") : t("error")}
+        </p>
+      )}
+
+      <Button type="submit" size="lg" disabled={pending}>
+        {pending ? t("sending") : t("submit")}
+      </Button>
+    </form>
+  );
+}

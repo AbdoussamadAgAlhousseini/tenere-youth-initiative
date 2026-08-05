@@ -1,0 +1,513 @@
+// Tenere Youth Initiative — Prisma schema
+// Datasource: PostgreSQL. i18n via suffixed columns (…Fr / …En).
+
+generator client {
+  provider      = "prisma-client-js"
+  // "native" for local dev; the rhel target is what Vercel's serverless
+  // runtime uses.
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Enums
+// ---------------------------------------------------------------------------
+
+enum Role {
+  USER
+  MEMBER
+  ADMIN
+}
+
+enum ArticleStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum ProgramTheme {
+  LEADERSHIP
+  EDUCATION
+  PASTORALISM
+  CLIMATE
+  DIGITAL
+  WOMEN
+  ENTREPRENEURSHIP
+  ADVOCACY
+}
+
+enum ResourceType {
+  REPORT
+  GUIDE
+  TOOLKIT
+  PUBLICATION
+}
+
+enum EventType {
+  WEBINAR
+  FORUM
+  CONFERENCE
+  WORKSHOP
+}
+
+enum MediaType {
+  IMAGE
+  VIDEO
+}
+
+enum PartnerTier {
+  STRATEGIC
+  FINANCIAL
+  TECHNICAL
+  COMMUNITY
+}
+
+enum DonationFrequency {
+  ONE_TIME
+  MONTHLY
+  YEARLY
+}
+
+// Payments are UI-only for now: donations are recorded with a STUB status.
+enum DonationStatus {
+  STUB
+  PENDING
+  COMPLETED
+  FAILED
+}
+
+enum VolunteerStatus {
+  PENDING
+  REVIEWING
+  ACCEPTED
+  DECLINED
+}
+
+enum MembershipStatus {
+  PENDING
+  ACTIVE
+  EXPIRED
+}
+
+enum RegistrationStatus {
+  CONFIRMED
+  WAITLISTED
+  CANCELLED
+}
+
+// ---------------------------------------------------------------------------
+// Auth (Auth.js / NextAuth) — User, Account, Session, VerificationToken
+// ---------------------------------------------------------------------------
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  role          Role      @default(USER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts      Account[]
+  sessions      Session[]
+
+  member        Member?
+  volunteer     Volunteer?
+  articles      Article[]      @relation("ArticleAuthor")
+  documents     Document[]
+  messages      Message[]
+  notifications Notification[]
+  donations     Donation[]
+  registrations Registration[]
+
+  @@index([role])
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ---------------------------------------------------------------------------
+// Membership & people
+// ---------------------------------------------------------------------------
+
+model Member {
+  id            String           @id @default(cuid())
+  userId        String           @unique
+  user          User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bio           String?          @db.Text
+  phone         String?
+  city          String?
+  countryId     String?
+  country       Country?         @relation(fields: [countryId], references: [id])
+  status        MembershipStatus @default(PENDING)
+  joinedAt      DateTime         @default(now())
+  membershipEnd DateTime?
+
+  @@index([status])
+}
+
+model Volunteer {
+  id             String          @id @default(cuid())
+  userId         String?         @unique
+  user           User?           @relation(fields: [userId], references: [id], onDelete: SetNull)
+  fullName       String
+  email          String
+  phone          String?
+  expertise      ProgramTheme[]
+  availability   String?         @db.Text
+  motivation     String?         @db.Text
+  status         VolunteerStatus @default(PENDING)
+  createdAt      DateTime        @default(now())
+
+  @@index([status])
+}
+
+// ---------------------------------------------------------------------------
+// Programs & projects
+// ---------------------------------------------------------------------------
+
+model Program {
+  id            String       @id @default(cuid())
+  slug          String       @unique
+  theme         ProgramTheme
+  titleFr       String
+  titleEn       String
+  summaryFr     String       @db.Text
+  summaryEn     String       @db.Text
+  descriptionFr String       @db.Text
+  descriptionEn String       @db.Text
+  icon          String?
+  coverImage    String?
+  order         Int          @default(0)
+  published     Boolean      @default(true)
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  projects      Project[]
+  events        Event[]
+  galleryItems  GalleryItem[]
+
+  @@index([published])
+}
+
+model Project {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  programId     String
+  program       Program  @relation(fields: [programId], references: [id], onDelete: Cascade)
+  titleFr       String
+  titleEn       String
+  descriptionFr String   @db.Text
+  descriptionEn String   @db.Text
+  coverImage    String?
+  countryId     String?
+  country       Country? @relation(fields: [countryId], references: [id])
+  startDate     DateTime?
+  endDate       DateTime?
+  createdAt     DateTime @default(now())
+
+  @@index([programId])
+}
+
+// ---------------------------------------------------------------------------
+// News / blog
+// ---------------------------------------------------------------------------
+
+model Article {
+  id           String        @id @default(cuid())
+  slug         String        @unique
+  titleFr      String
+  titleEn      String
+  excerptFr    String        @db.Text
+  excerptEn    String        @db.Text
+  bodyFr       String        @db.Text
+  bodyEn       String        @db.Text
+  coverImage   String?
+  status       ArticleStatus @default(DRAFT)
+  publishedAt  DateTime?
+  authorId     String?
+  author       User?         @relation("ArticleAuthor", fields: [authorId], references: [id], onDelete: SetNull)
+  categoryId   String?
+  category     Category?     @relation(fields: [categoryId], references: [id])
+  tags         Tag[]         @relation("ArticleTags")
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  @@index([status, publishedAt])
+  @@index([categoryId])
+}
+
+model Category {
+  id       String    @id @default(cuid())
+  slug     String    @unique
+  nameFr   String
+  nameEn   String
+  articles Article[]
+}
+
+model Tag {
+  id       String    @id @default(cuid())
+  slug     String    @unique
+  nameFr   String
+  nameEn   String
+  articles Article[] @relation("ArticleTags")
+}
+
+// ---------------------------------------------------------------------------
+// Events
+// ---------------------------------------------------------------------------
+
+model Event {
+  id            String         @id @default(cuid())
+  slug          String         @unique
+  titleFr       String
+  titleEn       String
+  descriptionFr String         @db.Text
+  descriptionEn String         @db.Text
+  type          EventType
+  startDate     DateTime
+  endDate       DateTime?
+  locationFr    String?
+  locationEn    String?
+  isOnline      Boolean        @default(false)
+  coverImage    String?
+  capacity      Int?
+  programId     String?
+  program       Program?       @relation(fields: [programId], references: [id], onDelete: SetNull)
+  registrations Registration[]
+  createdAt     DateTime       @default(now())
+
+  @@index([startDate])
+}
+
+model Registration {
+  id        String             @id @default(cuid())
+  eventId   String
+  event     Event              @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  userId    String?
+  user      User?              @relation(fields: [userId], references: [id], onDelete: SetNull)
+  fullName  String
+  email     String
+  status    RegistrationStatus @default(CONFIRMED)
+  createdAt DateTime           @default(now())
+
+  @@unique([eventId, email])
+  @@index([eventId])
+}
+
+// ---------------------------------------------------------------------------
+// Partners, resources, gallery
+// ---------------------------------------------------------------------------
+
+model Partner {
+  id        String      @id @default(cuid())
+  name      String
+  logo      String?
+  url       String?
+  tier      PartnerTier @default(COMMUNITY)
+  order     Int         @default(0)
+  createdAt DateTime    @default(now())
+}
+
+model Resource {
+  id            String       @id @default(cuid())
+  slug          String       @unique
+  titleFr       String
+  titleEn       String
+  descriptionFr String       @db.Text
+  descriptionEn String       @db.Text
+  type          ResourceType
+  fileUrl       String
+  fileSize      Int?
+  fileFormat    String?
+  coverImage    String?
+  published     Boolean      @default(true)
+  createdAt     DateTime     @default(now())
+
+  @@index([type, published])
+}
+
+model GalleryItem {
+  id         String    @id @default(cuid())
+  titleFr    String?
+  titleEn    String?
+  url        String
+  type       MediaType @default(IMAGE)
+  album      String?
+  programId  String?
+  program    Program?  @relation(fields: [programId], references: [id], onDelete: SetNull)
+  order      Int       @default(0)
+  createdAt  DateTime  @default(now())
+
+  @@index([album])
+}
+
+// ---------------------------------------------------------------------------
+// Engagement: newsletter, donations, testimonials
+// ---------------------------------------------------------------------------
+
+model NewsletterSubscriber {
+  id          String    @id @default(cuid())
+  email       String    @unique
+  locale      String    @default("fr")
+  confirmed   Boolean   @default(false)
+  token       String?   @unique
+  createdAt   DateTime  @default(now())
+  confirmedAt DateTime?
+}
+
+model Donation {
+  id        String            @id @default(cuid())
+  amount    Int // minor units (e.g. cents)
+  currency  String            @default("EUR")
+  frequency DonationFrequency @default(ONE_TIME)
+  status    DonationStatus    @default(STUB)
+  donorName String?
+  email     String?
+  message   String?           @db.Text
+  userId    String?
+  user      User?             @relation(fields: [userId], references: [id], onDelete: SetNull)
+  createdAt DateTime          @default(now())
+
+  @@index([status])
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  authorFr  String
+  authorEn  String
+  roleFr    String?
+  roleEn    String?
+  quoteFr   String   @db.Text
+  quoteEn   String   @db.Text
+  avatar    String?
+  order     Int      @default(0)
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+// ---------------------------------------------------------------------------
+// Member area: documents, messages, notifications
+// ---------------------------------------------------------------------------
+
+model Document {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  fileUrl   String
+  fileSize  Int?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subject   String
+  body      String   @db.Text
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([userId, read])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  titleFr   String
+  titleEn   String
+  href      String?
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([userId, read])
+}
+
+// ---------------------------------------------------------------------------
+// Contact
+// ---------------------------------------------------------------------------
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String   @db.Text
+  handled   Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([handled])
+}
+
+// ---------------------------------------------------------------------------
+// Reference data & settings
+// ---------------------------------------------------------------------------
+
+model Country {
+  id       String    @id @default(cuid())
+  code     String    @unique // ISO 3166-1 alpha-2
+  nameFr   String
+  nameEn   String
+  members  Member[]
+  projects Project[]
+}
+
+model Language {
+  id      String  @id @default(cuid())
+  code    String  @unique // e.g. "fr", "en"
+  nameFr  String
+  nameEn  String
+  enabled Boolean @default(true)
+}
+
+model Setting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String   @db.Text
+  updatedAt DateTime @updatedAt
+}
