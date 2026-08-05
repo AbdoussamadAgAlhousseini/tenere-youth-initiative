@@ -122,7 +122,15 @@
       "Bash(curl -s -L \"https://images.unsplash.com/photo-1473580044384-7ba9967e16a0?w=1200&q=70\" -o img3.jpg)",
       "Bash(curl -s -L \"https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&q=70\" -o img4.jpg)",
       "Bash(curl -s -L \"https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=1200&q=70\" -o img5.jpg)",
-      "Bash(awk '{print $5, $9}')"
+      "Bash(awk '{print $5, $9}')",
+      "Bash(npx -y vercel@latest dns ls tenere-youth.org)",
+      "Bash(npx -y vercel@latest dns add tenere-youth.org \"@\" TXT \"zoho-verification=zb10629398.zmverify.zoho.com\")",
+      "Bash(dig +short TXT tenere-youth.org @8.8.8.8)",
+      "Bash(dig +short TXT tenere-youth.org @1.1.1.1)",
+      "Bash(dig +short MX tenere-youth.org @8.8.8.8)",
+      "Bash(npx -y vercel@latest dns add tenere-youth.org \"zmail._domainkey\" TXT 'v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCdo322O/fKetYNR5mOK8kaINgoME46rsESP6Qs2NbP/1q3JAFE77lRbDLpqfrZDm/+NUWcHmGB2JUHUXlpk4xjNHMT5QDMVKpyLBYx5XhsHSYLAYsqXXhljYlMIca0ceQH7qUM2jvhuxQiF3j8RYEaqtpZ1NfnT2jFZOCATXc91QIDAQAB')",
+      "Bash(dig +short TXT zmail._domainkey.tenere-youth.org @8.8.8.8)",
+      "Bash(dig +short TXT zmail._domainkey.tenere-youth.org @1.1.1.1)"
     ]
   }
 }

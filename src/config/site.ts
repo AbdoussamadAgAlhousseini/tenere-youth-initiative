@@ -6,7 +6,7 @@ export const siteConfig = {
     fr: "Le désert n'est pas vide. Personne ne traverse le Ténéré seul.",
     en: "The desert is not empty. No one crosses the Ténéré alone.",
   },
-  email: "contact@tenereyouth.org",
+  email: "contact@tenere-youth.org",
   social: {
     facebook: "https://facebook.com/tenereyouth",
     instagram: "https://instagram.com/tenereyouth",
