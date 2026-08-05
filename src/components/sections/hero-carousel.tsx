@@ -80,7 +80,9 @@ export function HeroCarousel({
                   sizes="100vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/45 to-black/30" />
+                {/* Scrim for text legibility over any photo. */}
+                <div className="absolute inset-0 bg-black/45" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/45" />
               </>
             ) : (
               <div className="from-sand-100 via-background to-background dark:from-stone-900 dark:via-background absolute inset-0 bg-gradient-to-b" />
@@ -105,7 +107,7 @@ export function HeroCarousel({
           key={`t-${active.id}`}
           className={cn(
             "hero-fade max-w-4xl text-4xl font-semibold text-balance sm:text-5xl md:text-6xl",
-            hasImage && "text-white drop-shadow-sm",
+            hasImage && "text-white drop-shadow-md",
           )}
         >
           {active.title}
