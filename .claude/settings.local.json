@@ -114,7 +114,8 @@
       "Bash(grep -rnE \"/admin\\([/\\\\\"'\\\\` \\)]|$\\)\" . --include='*.ts' --include='*.tsx' --include='*.json' --include='*.md')",
       "Bash(node -e ' *)",
       "Bash(grep -rnE '\"/admin|`/admin|/\\\\$\\\\{locale\\\\}/admin|/fr/admin|/en/admin' src --include='*.ts' --include='*.tsx')",
-      "Bash(grep -nA15 \"images\")"
+      "Bash(grep -nA15 \"images\")",
+      "Bash(node -e 'JSON.parse\\(require\\(\"fs\"\\).readFileSync\\(\"messages/fr.json\"\\)\\); JSON.parse\\(require\\(\"fs\"\\).readFileSync\\(\"messages/en.json\"\\)\\); console.log\\(\"JSON valid ✓\"\\)')"
     ]
   }
 }

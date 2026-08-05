@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Sparkles } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
 
 import { getTeamMembers } from "@/server/repositories/misc";
@@ -41,8 +40,7 @@ export async function Leadership() {
         <p className="text-muted-foreground mt-4 text-lg text-pretty">
           {t("statement")}
         </p>
-        <span className="bg-primary/10 text-primary mt-6 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold">
-          <Sparkles className="size-4" aria-hidden />
+        <span className="bg-primary/10 text-primary mt-6 inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold">
           {t("badge")}
         </span>
       </div>
