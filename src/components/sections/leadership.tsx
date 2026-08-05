@@ -1,13 +1,35 @@
 import Image from "next/image";
 import { Sparkles } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 
-import { leadership, initials } from "@/lib/content/leadership";
+import { getTeamMembers } from "@/server/repositories/misc";
 
-export function Leadership() {
-  const locale = useLocale();
-  const isEn = locale === "en";
-  const t = useTranslations("leadership");
+/** Avatar gradient palette, assigned by position when a member has no photo. */
+const TONES = [
+  "from-oasis-400 to-oasis-700",
+  "from-sand-400 to-sand-700",
+  "from-sky-400 to-sky-700",
+  "from-oasis-300 to-sky-600",
+  "from-sand-500 to-oasis-600",
+  "from-sky-500 to-oasis-600",
+];
+
+/** Initials for the avatar fallback (e.g. "Aïssata Ba" → "AB"). */
+function initials(name: string) {
+  return name
+    .split(" ")
+    .map((p) => p[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+}
+
+export async function Leadership() {
+  const isEn = (await getLocale()) === "en";
+  const t = await getTranslations("leadership");
+  const members = await getTeamMembers();
+
+  if (members.length === 0) return null;
 
   return (
     <section className="container py-16 md:py-24">
@@ -26,13 +48,13 @@ export function Leadership() {
       </div>
 
       <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {leadership.map((leader) => (
+        {members.map((leader, i) => (
           <li
-            key={leader.name}
+            key={leader.id}
             className="bg-card flex flex-col items-center gap-4 rounded-2xl border p-8 text-center shadow-sm"
           >
             <div
-              className={`flex size-24 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br ${leader.tone} ring-4 ring-background`}
+              className={`flex size-24 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br ${TONES[i % TONES.length]} ring-4 ring-background`}
             >
               {leader.photo ? (
                 <Image

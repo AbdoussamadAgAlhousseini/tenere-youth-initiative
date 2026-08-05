@@ -22,6 +22,14 @@ export function getPartners() {
   return db.partner.findMany({ orderBy: { order: "asc" } });
 }
 
+/** Published team members (leadership), ordered. */
+export function getTeamMembers() {
+  return db.teamMember.findMany({
+    where: { published: true },
+    orderBy: { order: "asc" },
+  });
+}
+
 /** Published testimonials. */
 export function getTestimonials() {
   return db.testimonial.findMany({

@@ -15,6 +15,7 @@ import {
   Tags,
   UserCog,
   Users,
+  UsersRound,
 } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
@@ -47,6 +48,11 @@ export default async function AdminLayout({
       href: "/tenere/programs",
       label: "Programmes",
       icon: <BookOpen className="size-4" />,
+    },
+    {
+      href: "/tenere/team",
+      label: "Équipe",
+      icon: <UsersRound className="size-4" />,
     },
     {
       href: "/tenere/articles",

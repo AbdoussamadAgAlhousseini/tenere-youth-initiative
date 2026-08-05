@@ -26,11 +26,9 @@ const nextConfig: NextConfig = {
   // otherwise confuses Next.js workspace-root inference).
   outputFileTracingRoot: __dirname,
   images: {
-    remotePatterns: [
-      { protocol: "https", hostname: "res.cloudinary.com" },
-      { protocol: "https", hostname: "images.unsplash.com" },
-      { protocol: "https", hostname: "lh3.googleusercontent.com" },
-    ],
+    // Allow any HTTPS host so admin-entered image URLs (team photos, covers,
+    // gallery) work regardless of where they are hosted.
+    remotePatterns: [{ protocol: "https", hostname: "**" }],
   },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];

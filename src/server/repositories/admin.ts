@@ -75,6 +75,10 @@ export function listTestimonialsAdmin() {
   return db.testimonial.findMany({ orderBy: { order: "asc" } });
 }
 
+export function listTeamMembersAdmin() {
+  return db.teamMember.findMany({ orderBy: { order: "asc" } });
+}
+
 export function listPartnersAdmin() {
   return db.partner.findMany({ orderBy: { order: "asc" } });
 }

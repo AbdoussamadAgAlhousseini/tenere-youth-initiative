@@ -126,6 +126,19 @@ export const testimonialAdminSchema = z.object({
 });
 export type TestimonialAdminInput = z.infer<typeof testimonialAdminSchema>;
 
+/** Admin: create/update a team member (leadership). */
+export const teamMemberAdminSchema = z.object({
+  name: z.string().min(1).max(120),
+  roleFr: z.string().min(1).max(160),
+  roleEn: z.string().min(1).max(160),
+  bioFr: z.string().min(1),
+  bioEn: z.string().min(1),
+  photo: z.string().url().optional().or(z.literal("")),
+  order: z.coerce.number().int().min(0).default(0),
+  published: z.boolean().default(true),
+});
+export type TeamMemberAdminInput = z.infer<typeof teamMemberAdminSchema>;
+
 /** Admin: create/update a partner. */
 export const partnerAdminSchema = z.object({
   name: z.string().min(1).max(160),

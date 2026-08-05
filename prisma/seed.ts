@@ -348,6 +348,63 @@ async function main() {
     }
   }
 
+  const teamMembers = [
+    {
+      name: "Aïssata Ba",
+      roleFr: "Présidente",
+      roleEn: "President",
+      bioFr: "Militante des droits pastoraux, elle porte la vision de l'organisation.",
+      bioEn: "A pastoral-rights advocate, she carries the organization's vision.",
+    },
+    {
+      name: "Mariama Touré",
+      roleFr: "Directrice exécutive",
+      roleEn: "Executive Director",
+      bioFr: "Elle pilote la stratégie et les opérations au quotidien.",
+      bioEn: "She leads day-to-day strategy and operations.",
+    },
+    {
+      name: "Hawa Diallo",
+      roleFr: "Secrétaire générale",
+      roleEn: "Secretary General",
+      bioFr: "Garante de la gouvernance et de la vie associative.",
+      bioEn: "Guardian of governance and organizational life.",
+    },
+    {
+      name: "Ramata Sow",
+      roleFr: "Trésorière",
+      roleEn: "Treasurer",
+      bioFr: "Elle assure la transparence et la solidité financières.",
+      bioEn: "She ensures financial transparency and solidity.",
+    },
+    {
+      name: "Zeinabou Maïga",
+      roleFr: "Responsable des programmes",
+      roleEn: "Head of Programs",
+      bioFr: "Elle conçoit et coordonne les programmes sur le terrain.",
+      bioEn: "She designs and coordinates programs in the field.",
+    },
+    {
+      name: "Fatoumata Cissé",
+      roleFr: "Responsable du plaidoyer",
+      roleEn: "Head of Advocacy",
+      bioFr: "Elle porte la voix des communautés dans les espaces de décision.",
+      bioEn: "She carries communities' voice into decision-making spaces.",
+    },
+  ];
+
+  for (const [i, m] of teamMembers.entries()) {
+    const existing = await db.teamMember.findFirst({ where: { name: m.name } });
+    if (existing) {
+      await db.teamMember.update({
+        where: { id: existing.id },
+        data: { ...m, order: i },
+      });
+    } else {
+      await db.teamMember.create({ data: { ...m, order: i } });
+    }
+  }
+
   for (const [i, g] of galleryContent.entries()) {
     const existing = await db.galleryItem.findFirst({
       where: { titleFr: g.captionFr },
