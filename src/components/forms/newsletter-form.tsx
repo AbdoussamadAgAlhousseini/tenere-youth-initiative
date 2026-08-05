@@ -1,13 +1,13 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { CheckCircle2 } from "lucide-react";
 
 import { subscribeNewsletter } from "@/server/actions/newsletter";
 import type { ActionState } from "@/server/actions/newsletter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/components/ui/toast";
 
 const initialState: ActionState = { status: "idle" };
 
@@ -15,25 +15,32 @@ export function NewsletterForm() {
   const locale = useLocale();
   const t = useTranslations("home.newsletter");
   const tf = useTranslations("newsletterForm");
+  const toast = useToast();
+  const formRef = useRef<HTMLFormElement>(null);
   const [state, formAction, pending] = useActionState(
     subscribeNewsletter,
     initialState,
   );
 
-  if (state.status === "success") {
-    return (
-      <p
-        role="status"
-        className="flex items-center justify-center gap-2 text-sm font-medium"
-      >
-        <CheckCircle2 className="text-primary size-5" />
-        {tf("success")}
-      </p>
-    );
-  }
+  useEffect(() => {
+    if (state.status === "success") {
+      toast({ variant: "success", title: tf("success") });
+      formRef.current?.reset();
+    } else if (state.status === "error") {
+      toast({
+        variant: "error",
+        title:
+          state.message === "rate_limited"
+            ? tf("rateLimited")
+            : state.message === "invalid"
+              ? tf("invalid")
+              : tf("error"),
+      });
+    }
+  }, [state, tf, toast]);
 
   return (
-    <form action={formAction} className="mx-auto max-w-md space-y-3">
+    <form ref={formRef} action={formAction} className="mx-auto max-w-md space-y-3">
       <input type="hidden" name="locale" value={locale} />
       <div className="flex flex-col gap-2 sm:flex-row">
         <label htmlFor="newsletter-email" className="sr-only">
@@ -48,7 +55,7 @@ export function NewsletterForm() {
           className="bg-background"
         />
         <Button type="submit" disabled={pending}>
-          {t("submit")}
+          {pending ? tf("sending") : t("submit")}
         </Button>
       </div>
       <label className="text-muted-foreground flex items-start gap-2 text-left text-xs">
@@ -60,15 +67,6 @@ export function NewsletterForm() {
         />
         <span>{t("consent")}</span>
       </label>
-      {state.status === "error" && (
-        <p role="alert" className="text-destructive text-sm">
-          {state.message === "rate_limited"
-            ? tf("rateLimited")
-            : state.message === "invalid"
-              ? tf("invalid")
-              : tf("error")}
-        </p>
-      )}
     </form>
   );
 }

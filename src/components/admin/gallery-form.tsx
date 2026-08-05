@@ -7,6 +7,7 @@ import type { AdminActionState } from "@/server/actions/admin-articles";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { ImageUpload } from "@/components/admin/image-upload";
 
 const initial: AdminActionState = { status: "idle" };
 
@@ -55,8 +56,7 @@ export function GalleryForm({
         </div>
       </div>
       <div className="space-y-2">
-        <Label htmlFor="url">URL de l&apos;image (facultatif)</Label>
-        <Input id="url" name="url" type="url" placeholder="https://…" defaultValue={defaults?.url} className={cls} />
+        <ImageUpload name="url" defaultValue={defaults?.url} label="Image (facultatif)" />
       </div>
       <div className="grid gap-4 sm:grid-cols-3">
         <div className="space-y-2">

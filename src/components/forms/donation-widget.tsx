@@ -1,8 +1,8 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { CheckCircle2, Heart } from "lucide-react";
+import { Heart } from "lucide-react";
 
 import { createDonation } from "@/server/actions/donation";
 import type { ActionState } from "@/server/actions/newsletter";
@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/components/ui/toast";
 import { cn, formatNumber } from "@/lib/utils";
 
 const presets = [25, 50, 100, 250];
@@ -18,6 +19,8 @@ const initialState: ActionState = { status: "idle" };
 export function DonationWidget() {
   const locale = useLocale();
   const t = useTranslations("pages.donate");
+  const toast = useToast();
+  const formRef = useRef<HTMLFormElement>(null);
   const [amount, setAmount] = useState(50);
   const [custom, setCustom] = useState("");
   const [frequency, setFrequency] = useState<"ONE_TIME" | "MONTHLY" | "YEARLY">(
@@ -30,17 +33,21 @@ export function DonationWidget() {
 
   const effectiveAmount = custom ? Number(custom) : amount;
 
-  if (state.status === "success") {
-    return (
-      <div className="border-primary/30 bg-primary/5 flex flex-col items-center gap-3 rounded-2xl border p-10 text-center">
-        <CheckCircle2 className="text-primary size-12" />
-        <p className="text-lg font-medium">{t("success")}</p>
-      </div>
-    );
-  }
+  useEffect(() => {
+    if (state.status === "success") {
+      toast({ variant: "success", title: t("success") });
+      formRef.current?.reset();
+      setAmount(50);
+      setCustom("");
+      setFrequency("ONE_TIME");
+    } else if (state.status === "error") {
+      toast({ variant: "error", title: t("error") });
+    }
+  }, [state, t, toast]);
 
   return (
     <form
+      ref={formRef}
       action={formAction}
       className="bg-card space-y-6 rounded-2xl border p-6 shadow-sm sm:p-8"
     >
@@ -127,12 +134,6 @@ export function DonationWidget() {
       <input type="hidden" name="amount" value={effectiveAmount || 0} />
       <input type="hidden" name="currency" value="EUR" />
       <input type="hidden" name="frequency" value={frequency} />
-
-      {state.status === "error" && (
-        <p role="alert" className="text-destructive text-sm">
-          {t("error")}
-        </p>
-      )}
 
       <Button
         type="submit"

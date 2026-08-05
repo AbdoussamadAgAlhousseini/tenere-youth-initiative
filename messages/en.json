@@ -329,6 +329,7 @@
   },
   "newsletterForm": {
     "success": "Thank you! Check your inbox to confirm.",
+    "sending": "Sending…",
     "error": "Something went wrong. Please try again.",
     "invalid": "Invalid email or missing consent.",
     "rateLimited": "Too many attempts. Please wait a moment."

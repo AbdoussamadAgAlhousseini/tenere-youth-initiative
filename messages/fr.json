@@ -329,6 +329,7 @@
   },
   "newsletterForm": {
     "success": "Merci ! Vérifiez votre boîte mail pour confirmer.",
+    "sending": "Envoi…",
     "error": "Une erreur est survenue. Réessayez.",
     "invalid": "Adresse e-mail invalide ou consentement manquant.",
     "rateLimited": "Trop de tentatives. Patientez un instant."

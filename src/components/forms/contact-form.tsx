@@ -1,8 +1,7 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
-import { CheckCircle2 } from "lucide-react";
 
 import { sendContactMessage } from "@/server/actions/contact";
 import type { ActionState } from "@/server/actions/newsletter";
@@ -10,30 +9,33 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { useToast } from "@/components/ui/toast";
 
 const initialState: ActionState = { status: "idle" };
 
 export function ContactForm() {
   const t = useTranslations("contact.form");
+  const toast = useToast();
+  const formRef = useRef<HTMLFormElement>(null);
   const [state, formAction, pending] = useActionState(
     sendContactMessage,
     initialState,
   );
 
-  if (state.status === "success") {
-    return (
-      <div
-        role="status"
-        className="border-primary/30 bg-primary/5 flex flex-col items-center gap-3 rounded-2xl border p-8 text-center"
-      >
-        <CheckCircle2 className="text-primary size-10" />
-        <p className="font-medium">{t("success")}</p>
-      </div>
-    );
-  }
+  useEffect(() => {
+    if (state.status === "success") {
+      toast({ variant: "success", title: t("success") });
+      formRef.current?.reset();
+    } else if (state.status === "error") {
+      toast({
+        variant: "error",
+        title: state.message === "rate_limited" ? t("rateLimited") : t("error"),
+      });
+    }
+  }, [state, t, toast]);
 
   return (
-    <form action={formAction} className="space-y-5" noValidate>
+    <form ref={formRef} action={formAction} className="space-y-5" noValidate>
       {/* Honeypot: hidden from users, catches bots. */}
       <div className="hidden" aria-hidden>
         <label htmlFor="website">Website</label>
@@ -66,12 +68,6 @@ export function ContactForm() {
         <Label htmlFor="message">{t("message")}</Label>
         <Textarea id="message" name="message" required rows={6} />
       </div>
-
-      {state.status === "error" && (
-        <p role="alert" className="text-destructive text-sm">
-          {state.message === "rate_limited" ? t("rateLimited") : t("error")}
-        </p>
-      )}
 
       <Button type="submit" size="lg" disabled={pending}>
         {pending ? t("sending") : t("submit")}

@@ -1,8 +1,7 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { CheckCircle2 } from "lucide-react";
 
 import { submitVolunteer } from "@/server/actions/volunteer";
 import type { ActionState } from "@/server/actions/newsletter";
@@ -11,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/components/ui/toast";
 
 const initialState: ActionState = { status: "idle" };
 
@@ -18,22 +18,28 @@ export function VolunteerForm() {
   const locale = useLocale();
   const t = useTranslations("pages.volunteer");
   const themes = useTranslations("programThemes");
+  const toast = useToast();
+  const formRef = useRef<HTMLFormElement>(null);
   const [state, formAction, pending] = useActionState(
     submitVolunteer,
     initialState,
   );
 
-  if (state.status === "success") {
-    return (
-      <div className="border-primary/30 bg-primary/5 flex flex-col items-center gap-3 rounded-2xl border p-10 text-center">
-        <CheckCircle2 className="text-primary size-12" />
-        <p className="text-lg font-medium">{t("success")}</p>
-      </div>
-    );
-  }
+  useEffect(() => {
+    if (state.status === "success") {
+      toast({ variant: "success", title: t("success") });
+      formRef.current?.reset();
+    } else if (state.status === "error") {
+      toast({
+        variant: "error",
+        title: state.message === "invalid" ? t("selectExpertise") : t("error"),
+      });
+    }
+  }, [state, t, toast]);
 
   return (
     <form
+      ref={formRef}
       action={formAction}
       className="bg-card space-y-5 rounded-2xl border p-6 shadow-sm sm:p-8"
       noValidate
@@ -91,12 +97,6 @@ export function VolunteerForm() {
         <Label htmlFor="motivation">{t("motivation")}</Label>
         <Textarea id="motivation" name="motivation" required rows={5} />
       </div>
-
-      {state.status === "error" && (
-        <p role="alert" className="text-destructive text-sm">
-          {state.message === "invalid" ? t("selectExpertise") : t("error")}
-        </p>
-      )}
 
       <Button type="submit" size="lg" disabled={pending}>
         {pending ? t("sending") : t("submit")}

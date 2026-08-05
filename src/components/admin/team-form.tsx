@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { ImageUpload } from "@/components/admin/image-upload";
 
 const initial: AdminActionState = { status: "idle" };
 
@@ -70,8 +71,7 @@ export function TeamForm({
         </div>
       </div>
       <div className="space-y-2">
-        <Label htmlFor="photo">Photo (URL) — optionnel</Label>
-        <Input id="photo" name="photo" type="url" placeholder="https://…" defaultValue={defaults?.photo} className={cls} />
+        <ImageUpload name="photo" defaultValue={defaults?.photo} label="Photo — optionnel" />
         <p className="text-muted-foreground text-xs">
           {"Laissez vide pour afficher les initiales sur un fond dégradé."}
         </p>
