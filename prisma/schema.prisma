@@ -413,6 +413,22 @@ model Donation {
   @@index([status])
 }
 
+// Rotating hero slides on the homepage (slogan + desert background image).
+model HeroSlide {
+  id         String   @id @default(cuid())
+  titleFr    String   @db.Text
+  titleEn    String   @db.Text
+  subtitleFr String?  @db.Text
+  subtitleEn String?  @db.Text
+  image      String?
+  order      Int      @default(0)
+  published  Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([published])
+}
+
 // History timeline entries shown on the About page.
 model Milestone {
   id        String   @id @default(cuid())

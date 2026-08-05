@@ -4,6 +4,7 @@ import {
   Calendar,
   FileText,
   FolderTree,
+  GalleryHorizontalEnd,
   Handshake,
   Heart,
   ImageIcon,
@@ -45,6 +46,11 @@ export default async function AdminLayout({
       label: t("nav.dashboard"),
       icon: <LayoutDashboard className="size-4" />,
       exact: true,
+    },
+    {
+      href: "/tenere/hero",
+      label: "Accueil — slogans",
+      icon: <GalleryHorizontalEnd className="size-4" />,
     },
     {
       href: "/tenere/programs",

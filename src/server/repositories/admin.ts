@@ -83,6 +83,10 @@ export function listMilestonesAdmin() {
   return db.milestone.findMany({ orderBy: { order: "asc" } });
 }
 
+export function listHeroSlidesAdmin() {
+  return db.heroSlide.findMany({ orderBy: { order: "asc" } });
+}
+
 export function listPartnersAdmin() {
   return db.partner.findMany({ orderBy: { order: "asc" } });
 }

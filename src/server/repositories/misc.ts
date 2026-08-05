@@ -22,6 +22,14 @@ export function getPartners() {
   return db.partner.findMany({ orderBy: { order: "asc" } });
 }
 
+/** Published homepage hero slides, ordered. */
+export function getHeroSlides() {
+  return db.heroSlide.findMany({
+    where: { published: true },
+    orderBy: { order: "asc" },
+  });
+}
+
 /** Published history-timeline milestones, ordered. */
 export function getMilestones() {
   return db.milestone.findMany({

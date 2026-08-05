@@ -348,6 +348,53 @@ async function main() {
     }
   }
 
+  const heroU = "https://images.unsplash.com/photo-";
+  const heroQ = "?w=1920&q=70&auto=format&fit=crop";
+  const heroSlides = [
+    {
+      titleFr:
+        "Renforcer le pouvoir des jeunes des communautés pastorales et nomades",
+      titleEn: "Empowering youth from pastoralist and nomadic communities",
+      subtitleFr:
+        "Nous formons une génération de jeunes leaders capables de transformer leurs communautés — par le leadership, l'éducation, le climat et le numérique.",
+      subtitleEn:
+        "We nurture a generation of young leaders able to transform their communities — through leadership, education, climate and digital.",
+      image: heroU + "1473580044384-7ba9967e16a0" + heroQ,
+    },
+    {
+      titleFr: "Le désert n'est pas vide",
+      titleEn: "The desert is not empty",
+      subtitleFr:
+        "Personne ne traverse le Ténéré seul. Ensemble, nous faisons grandir les savoirs, la solidarité et l'avenir des communautés.",
+      subtitleEn:
+        "No one crosses the Ténéré alone. Together we grow knowledge, solidarity and the future of communities.",
+      image: heroU + "1489749798305-4fea3ae63d43" + heroQ,
+    },
+    {
+      titleFr: "Rejoignez un mouvement de jeunesse enraciné",
+      titleEn: "Join a rooted youth movement",
+      subtitleFr:
+        "Du Sahel au reste du monde, des jeunes agissent pour leurs territoires. Prenez part au changement.",
+      subtitleEn:
+        "From the Sahel outward, young people act for their lands. Be part of the change.",
+      image: heroU + "1489493887464-892be6d1daae" + heroQ,
+    },
+  ];
+
+  for (const [i, s] of heroSlides.entries()) {
+    const existing = await db.heroSlide.findFirst({
+      where: { titleFr: s.titleFr },
+    });
+    if (existing) {
+      await db.heroSlide.update({
+        where: { id: existing.id },
+        data: { ...s, order: i },
+      });
+    } else {
+      await db.heroSlide.create({ data: { ...s, order: i } });
+    }
+  }
+
   const milestones = [
     {
       year: "2017",

@@ -136,6 +136,18 @@ export const milestoneAdminSchema = z.object({
 });
 export type MilestoneAdminInput = z.infer<typeof milestoneAdminSchema>;
 
+/** Admin: create/update a homepage hero slide (slogan + background image). */
+export const heroSlideAdminSchema = z.object({
+  titleFr: z.string().min(1).max(300),
+  titleEn: z.string().min(1).max(300),
+  subtitleFr: z.string().max(600).optional().or(z.literal("")),
+  subtitleEn: z.string().max(600).optional().or(z.literal("")),
+  image: z.string().url().optional().or(z.literal("")),
+  order: z.coerce.number().int().min(0).default(0),
+  published: z.boolean().default(true),
+});
+export type HeroSlideAdminInput = z.infer<typeof heroSlideAdminSchema>;
+
 /** Admin: homepage impact key-figures (stored as impact.* settings). */
 export const impactStatsSchema = z.object({
   youth: z.coerce.number().int().min(0),

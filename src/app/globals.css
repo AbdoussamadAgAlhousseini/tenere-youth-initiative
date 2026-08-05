@@ -108,4 +108,20 @@
   .container-tight {
     @apply mx-auto w-full max-w-3xl px-6;
   }
+
+  /* Subtle fade/rise when a hero slogan changes. */
+  @keyframes heroFade {
+    from {
+      opacity: 0;
+      transform: translateY(0.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-fade {
+    animation: heroFade 0.6s ease-out both;
+  }
 }
