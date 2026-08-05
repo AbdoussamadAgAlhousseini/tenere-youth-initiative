@@ -126,6 +126,16 @@ export const testimonialAdminSchema = z.object({
 });
 export type TestimonialAdminInput = z.infer<typeof testimonialAdminSchema>;
 
+/** Admin: create/update a history-timeline milestone. */
+export const milestoneAdminSchema = z.object({
+  year: z.string().min(1).max(20),
+  textFr: z.string().min(1),
+  textEn: z.string().min(1),
+  order: z.coerce.number().int().min(0).default(0),
+  published: z.boolean().default(true),
+});
+export type MilestoneAdminInput = z.infer<typeof milestoneAdminSchema>;
+
 /** Admin: homepage impact key-figures (stored as impact.* settings). */
 export const impactStatsSchema = z.object({
   youth: z.coerce.number().int().min(0),

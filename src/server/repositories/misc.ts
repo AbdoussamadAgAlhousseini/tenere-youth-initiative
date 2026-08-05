@@ -22,6 +22,14 @@ export function getPartners() {
   return db.partner.findMany({ orderBy: { order: "asc" } });
 }
 
+/** Published history-timeline milestones, ordered. */
+export function getMilestones() {
+  return db.milestone.findMany({
+    where: { published: true },
+    orderBy: { order: "asc" },
+  });
+}
+
 /** Published team members (leadership), ordered. */
 export function getTeamMembers() {
   return db.teamMember.findMany({

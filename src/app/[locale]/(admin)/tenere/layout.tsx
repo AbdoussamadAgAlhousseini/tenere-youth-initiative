@@ -11,6 +11,7 @@ import {
   Library,
   Mail,
   MessageSquare,
+  Milestone as MilestoneIcon,
   Quote,
   SlidersHorizontal,
   Tags,
@@ -54,6 +55,11 @@ export default async function AdminLayout({
       href: "/tenere/team",
       label: "Équipe",
       icon: <UsersRound className="size-4" />,
+    },
+    {
+      href: "/tenere/timeline",
+      label: "Chronologie",
+      icon: <MilestoneIcon className="size-4" />,
     },
     {
       href: "/tenere/articles",

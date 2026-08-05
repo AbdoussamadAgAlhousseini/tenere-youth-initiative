@@ -11,6 +11,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { PageHeader } from "@/components/layout/page-header";
 import { Leadership } from "@/components/sections/leadership";
+import { getMilestones } from "@/server/repositories/misc";
 
 export async function generateMetadata({
   params,
@@ -30,13 +31,9 @@ export default async function AboutPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("about");
+  const isEn = locale === "en";
 
-  const milestones = [
-    { key: "founding", year: "2019" },
-    { key: "programs", year: "2021" },
-    { key: "network", year: "2023" },
-    { key: "today", year: "2025" },
-  ] as const;
+  const milestones = await getMilestones();
 
   const values = [
     { key: "rooted", Icon: Leaf },
@@ -61,7 +58,7 @@ export default async function AboutPage({
         </p>
         <ol className="relative space-y-8 border-l pl-8">
           {milestones.map((m) => (
-            <li key={m.key} className="relative">
+            <li key={m.id} className="relative">
               <span className="bg-primary absolute -left-[2.6rem] top-1 flex size-6 items-center justify-center rounded-full text-xs font-bold text-primary-foreground">
                 •
               </span>
@@ -69,7 +66,7 @@ export default async function AboutPage({
                 {m.year}
               </p>
               <p className="text-muted-foreground">
-                {t(`history.milestones.${m.key}`)}
+                {isEn ? m.textEn : m.textFr}
               </p>
             </li>
           ))}

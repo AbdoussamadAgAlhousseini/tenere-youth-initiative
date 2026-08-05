@@ -348,6 +348,41 @@ async function main() {
     }
   }
 
+  const milestones = [
+    {
+      year: "2017",
+      textFr: "Création du collectif par de jeunes bénévoles pastoraux.",
+      textEn: "The collective is created by young pastoralist volunteers.",
+    },
+    {
+      year: "2024",
+      textFr: "Officialisation de l'association.",
+      textEn: "The organization is officially registered.",
+    },
+    {
+      year: "2025",
+      textFr: "Expansion à travers tout le Ténéré (Tinariwen) du Mali.",
+      textEn: "Expansion across the whole Ténéré (Tinariwen) in Mali.",
+    },
+    {
+      year: "2026",
+      textFr: "Un réseau régional au service des communautés.",
+      textEn: "A regional network serving communities.",
+    },
+  ];
+
+  for (const [i, m] of milestones.entries()) {
+    const existing = await db.milestone.findFirst({ where: { year: m.year } });
+    if (existing) {
+      await db.milestone.update({
+        where: { id: existing.id },
+        data: { ...m, order: i },
+      });
+    } else {
+      await db.milestone.create({ data: { ...m, order: i } });
+    }
+  }
+
   const teamMembers = [
     {
       name: "Aïssata Ba",

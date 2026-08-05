@@ -79,6 +79,10 @@ export function listTeamMembersAdmin() {
   return db.teamMember.findMany({ orderBy: { order: "asc" } });
 }
 
+export function listMilestonesAdmin() {
+  return db.milestone.findMany({ orderBy: { order: "asc" } });
+}
+
 export function listPartnersAdmin() {
   return db.partner.findMany({ orderBy: { order: "asc" } });
 }
