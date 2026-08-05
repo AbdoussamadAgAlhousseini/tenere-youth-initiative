@@ -44,7 +44,7 @@ export function ArticleForm({
 
   useEffect(() => {
     if (state.status === "success") {
-      router.push("/admin/articles");
+      router.push("/tenere/articles");
     }
   }, [state.status, router]);
 

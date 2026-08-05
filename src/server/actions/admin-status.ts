@@ -23,7 +23,7 @@ export async function setVolunteerStatus(id: string, status: string) {
     data: { status: status as VolunteerStatus },
   });
   for (const locale of ["fr", "en"]) {
-    revalidatePath(`/${locale}/admin/volunteers`);
+    revalidatePath(`/${locale}/tenere/volunteers`);
   }
 }
 
@@ -36,6 +36,6 @@ export async function toggleContactHandled(id: string) {
     data: { handled: !current.handled },
   });
   for (const locale of ["fr", "en"]) {
-    revalidatePath(`/${locale}/admin/messages`);
+    revalidatePath(`/${locale}/tenere/messages`);
   }
 }

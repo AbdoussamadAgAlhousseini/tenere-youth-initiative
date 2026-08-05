@@ -64,7 +64,7 @@ export function ProgramForm({
   const [state, formAction, pending] = useActionState(action, initial);
 
   useEffect(() => {
-    if (state.status === "success") router.push("/admin/programs");
+    if (state.status === "success") router.push("/tenere/programs");
   }, [state.status, router]);
 
   const cls = "bg-background";

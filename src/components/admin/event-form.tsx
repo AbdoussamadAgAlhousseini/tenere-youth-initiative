@@ -44,7 +44,7 @@ export function EventForm({
   const [state, formAction, pending] = useActionState(action, initial);
 
   useEffect(() => {
-    if (state.status === "success") router.push("/admin/events");
+    if (state.status === "success") router.push("/tenere/events");
   }, [state.status, router]);
 
   const cls = "bg-background";

@@ -35,7 +35,7 @@ export function PartnerForm({
   const [state, formAction, pending] = useActionState(action, initial);
 
   useEffect(() => {
-    if (state.status === "success") router.push("/admin/partners");
+    if (state.status === "success") router.push("/tenere/partners");
   }, [state.status, router]);
 
   const cls = "bg-background";

@@ -11,7 +11,7 @@ import type { ResourceType } from "@prisma/client";
 function revalidateResources() {
   for (const locale of ["fr", "en"]) {
     revalidatePath(`/${locale}/resources`);
-    revalidatePath(`/${locale}/admin/resources`);
+    revalidatePath(`/${locale}/tenere/resources`);
   }
 }
 

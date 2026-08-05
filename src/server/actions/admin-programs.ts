@@ -11,7 +11,7 @@ import type { ProgramTheme } from "@prisma/client";
 function revalidatePrograms(slug?: string) {
   for (const locale of ["fr", "en"]) {
     revalidatePath(`/${locale}/programs`);
-    revalidatePath(`/${locale}/admin/programs`);
+    revalidatePath(`/${locale}/tenere/programs`);
     revalidatePath(`/${locale}`);
     if (slug) revalidatePath(`/${locale}/programs/${slug}`);
   }

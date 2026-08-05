@@ -108,7 +108,12 @@
       "Bash(npx -y vercel@latest inspect --logs tenere-youth-initiative-ltfs90b01-akal1.vercel.app)",
       "Bash(git commit -q -m ' *)",
       "Bash(git push *)",
-      "Bash(curl -s https://www.tenere-youth.org/fr/sign-in)"
+      "Bash(curl -s https://www.tenere-youth.org/fr/sign-in)",
+      "Bash(grep -rnE '/admin\\([/\"'\\\\'' `\\)]|$\\)' src --include='*.ts' --include='*.tsx')",
+      "Bash(grep -rnE \"/admin\\([/\\\\\"'\\\\` \\)]|$\\)\" \"src/app/[locale]/\\(admin\\)/admin/\" --include='*.tsx' --include='*.ts')",
+      "Bash(grep -rnE \"/admin\\([/\\\\\"'\\\\` \\)]|$\\)\" . --include='*.ts' --include='*.tsx' --include='*.json' --include='*.md')",
+      "Bash(node -e ' *)",
+      "Bash(grep -rnE '\"/admin|`/admin|/\\\\$\\\\{locale\\\\}/admin|/fr/admin|/en/admin' src --include='*.ts' --include='*.tsx')"
     ]
   }
 }

@@ -17,7 +17,7 @@ export type AdminActionState = {
 function revalidateArticles(slug?: string) {
   for (const locale of ["fr", "en"]) {
     revalidatePath(`/${locale}/news`);
-    revalidatePath(`/${locale}/admin/articles`);
+    revalidatePath(`/${locale}/tenere/articles`);
     revalidatePath(`/${locale}`);
     if (slug) revalidatePath(`/${locale}/news/${slug}`);
   }

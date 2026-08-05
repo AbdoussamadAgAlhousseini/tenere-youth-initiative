@@ -40,7 +40,7 @@ export default async function SignInPage({
         </div>
 
         <AdminLogin
-          callbackUrl={`/${locale}/admin`}
+          callbackUrl={`/${locale}/tenere`}
           label={en ? "Sign in" : "Se connecter"}
           placeholder={en ? "Password" : "Mot de passe"}
         />

@@ -13,7 +13,6 @@ The Tenere Youth Initiative site is a Next.js 15 app backed by Supabase
 - A **GitHub** account (to host the code).
 - A **Vercel** account (free) — sign in with GitHub.
 - Your **Supabase** project (already set up).
-- A **Google Cloud** project for OAuth login (see step 3).
 
 ---
 
@@ -47,7 +46,7 @@ git push -u origin main
 
 Login is **password-only** — no email, no Google. Set a single env var
 `ADMIN_PASSWORD` (below); anyone who enters it at `/fr/sign-in` is signed in as
-the seeded admin (`admin@tenereyouth.org`, role ADMIN) and lands on `/fr/admin`.
+the seeded admin (`admin@tenereyouth.org`, role ADMIN) and lands on `/fr/tenere`.
 
 To change the password later:
 
@@ -91,23 +90,10 @@ minutes.
 
 - Visit `https://<your-domain>` → should redirect to `/fr`.
 - Check `https://<your-domain>/sitemap.xml`, `/robots.txt`, `/feed.xml`.
-- Sign in via Google, then visit `/fr/admin` (your Google account starts as
-  `USER`; promote it to `ADMIN` once — see below).
-- If you changed the domain after the first deploy, update `AUTH_URL`,
-  `NEXT_PUBLIC_SITE_URL`, and the Google redirect URI, then redeploy.
-
-### Promote your account to ADMIN
-
-The seeded admin is `admin@tenereyouth.org` (no real login). To make **your**
-Google account an admin, run once against the production DB (locally, with the
-production `DATABASE_URL` in `.env`):
-
-```bash
-npx tsx -e "import{PrismaClient}from'@prisma/client';const d=new PrismaClient();d.user.update({where:{email:'YOU@gmail.com'},data:{role:'ADMIN'}}).then(()=>console.log('done')).finally(()=>d.\$disconnect())"
-```
-
-Or use Supabase's SQL editor:
-`update "User" set role = 'ADMIN' where email = 'YOU@gmail.com';`
+- Go to `/fr/sign-in`, enter the `ADMIN_PASSWORD`, and you land on `/fr/tenere`
+  signed in as admin.
+- If you changed the domain after the first deploy, update `AUTH_URL` and
+  `NEXT_PUBLIC_SITE_URL`, then redeploy.
 
 ---
 

@@ -11,7 +11,7 @@ import type { EventType } from "@prisma/client";
 function revalidateEvents(slug?: string) {
   for (const locale of ["fr", "en"]) {
     revalidatePath(`/${locale}/events`);
-    revalidatePath(`/${locale}/admin/events`);
+    revalidatePath(`/${locale}/tenere/events`);
     revalidatePath(`/${locale}`);
     if (slug) revalidatePath(`/${locale}/events/${slug}`);
   }

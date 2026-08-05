@@ -11,7 +11,7 @@ import type { MediaType } from "@prisma/client";
 function revalidateGallery() {
   for (const locale of ["fr", "en"]) {
     revalidatePath(`/${locale}/gallery`);
-    revalidatePath(`/${locale}/admin/gallery`);
+    revalidatePath(`/${locale}/tenere/gallery`);
   }
 }
 

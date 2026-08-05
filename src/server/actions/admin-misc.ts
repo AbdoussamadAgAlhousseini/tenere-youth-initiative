@@ -11,8 +11,8 @@ import type { PartnerTier } from "@prisma/client";
 function revalidateHome() {
   for (const locale of ["fr", "en"]) {
     revalidatePath(`/${locale}`);
-    revalidatePath(`/${locale}/admin/testimonials`);
-    revalidatePath(`/${locale}/admin/partners`);
+    revalidatePath(`/${locale}/tenere/testimonials`);
+    revalidatePath(`/${locale}/tenere/partners`);
   }
 }
 

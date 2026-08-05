@@ -10,8 +10,8 @@ import type { AdminActionState } from "./admin-articles";
 function revalidateTaxonomy() {
   for (const locale of ["fr", "en"]) {
     revalidatePath(`/${locale}/news`);
-    revalidatePath(`/${locale}/admin/categories`);
-    revalidatePath(`/${locale}/admin/tags`);
+    revalidatePath(`/${locale}/tenere/categories`);
+    revalidatePath(`/${locale}/tenere/tags`);
   }
 }
 

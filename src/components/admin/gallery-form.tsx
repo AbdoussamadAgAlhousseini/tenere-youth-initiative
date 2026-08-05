@@ -35,7 +35,7 @@ export function GalleryForm({
   const [state, formAction, pending] = useActionState(action, initial);
 
   useEffect(() => {
-    if (state.status === "success") router.push("/admin/gallery");
+    if (state.status === "success") router.push("/tenere/gallery");
   }, [state.status, router]);
 
   const cls = "bg-background";

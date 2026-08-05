@@ -38,7 +38,7 @@ export function TestimonialForm({
   const [state, formAction, pending] = useActionState(action, initial);
 
   useEffect(() => {
-    if (state.status === "success") router.push("/admin/testimonials");
+    if (state.status === "success") router.push("/tenere/testimonials");
   }, [state.status, router]);
 
   const cls = "bg-background";
