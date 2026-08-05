@@ -43,19 +43,19 @@ git push -u origin main
 
 ---
 
-## 3. Google OAuth (production login)
+## 3. Admin login (password-only)
 
-The public site works without it, but member/admin **login** needs Google
-credentials in production (the dev-login is disabled outside development).
+Login is **password-only** — no email, no Google. Set a single env var
+`ADMIN_PASSWORD` (below); anyone who enters it at `/fr/sign-in` is signed in as
+the seeded admin (`admin@tenereyouth.org`, role ADMIN) and lands on `/fr/admin`.
 
-1. [Google Cloud Console](https://console.cloud.google.com/apis/credentials) →
-   **Create Credentials → OAuth client ID → Web application**.
-2. **Authorized redirect URIs** (production domain is `www.tenere-youth.org`):
-   `https://www.tenere-youth.org/api/auth/callback/google`
-   `https://tenere-youth.org/api/auth/callback/google`
-   (add `https://<project>.vercel.app/api/auth/callback/google` too if you also
-   use the default Vercel domain).
-3. Copy the **Client ID** and **Client secret** into the env vars below.
+To change the password later:
+
+```bash
+vercel env rm ADMIN_PASSWORD production --yes
+printf '%s' 'YOUR-NEW-PASSWORD' | vercel env add ADMIN_PASSWORD production
+vercel --prod   # redeploy so the new value takes effect
+```
 
 ---
 
@@ -67,8 +67,7 @@ credentials in production (the dev-login is disabled outside development).
 | `DIRECT_URL` | Supabase **session pooler / direct** URI (port `5432`) | migrations |
 | `AUTH_SECRET` | output of `openssl rand -base64 32` | **use a fresh strong value** |
 | `AUTH_URL` | `https://<your-domain>` | your production URL |
-| `AUTH_GOOGLE_ID` | Google OAuth client ID | from step 3 |
-| `AUTH_GOOGLE_SECRET` | Google OAuth client secret | from step 3 |
+| `ADMIN_PASSWORD` | the admin login password | **keep secret**; change anytime (step 3) |
 | `NEXT_PUBLIC_SITE_URL` | `https://<your-domain>` | used by SEO (canonical, sitemap, OG) |
 | `CLOUDINARY_*` | _optional_ | only if you use Cloudinary uploads |
 
