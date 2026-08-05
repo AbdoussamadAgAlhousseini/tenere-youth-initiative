@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { setRequestLocale, getTranslations } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 
 import { Link } from "@/lib/i18n/navigation";
 import { Logo } from "@/components/layout/logo";
-import { GoogleSignIn } from "@/components/auth/google-sign-in";
-import { DevLogin } from "@/components/auth/dev-login";
+import { AdminLogin } from "@/components/auth/admin-login";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -19,7 +18,7 @@ export default async function SignInPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations("auth");
+  const en = locale === "en";
 
   return (
     <div className="container flex min-h-[70vh] items-center justify-center py-16">
@@ -29,25 +28,25 @@ export default async function SignInPage({
             <Logo />
           </Link>
           <div>
-            <h1 className="text-2xl font-semibold">{t("title")}</h1>
-            <p className="text-muted-foreground mt-2 text-sm">{t("subtitle")}</p>
+            <h1 className="text-2xl font-semibold">
+              {en ? "Admin sign in" : "Connexion administration"}
+            </h1>
+            <p className="text-muted-foreground mt-2 text-sm">
+              {en
+                ? "Enter the admin password to manage the site."
+                : "Saisissez le mot de passe administrateur pour gérer le site."}
+            </p>
           </div>
         </div>
 
-        <GoogleSignIn label={t("google")} callbackUrl={`/${locale}/dashboard`} />
-
-        <DevLogin callbackUrl={`/${locale}/dashboard`} />
-
-        <p className="text-muted-foreground text-center text-xs text-balance">
-          {t("legal")}{" "}
-          <Link href="/privacy" className="underline hover:text-foreground">
-            {t("privacy")}
-          </Link>
-          .
-        </p>
+        <AdminLogin
+          callbackUrl={`/${locale}/admin`}
+          label={en ? "Sign in" : "Se connecter"}
+          placeholder={en ? "Password" : "Mot de passe"}
+        />
 
         <p className="text-muted-foreground text-center text-xs">
-          {siteConfig.motto[locale === "en" ? "en" : "fr"]}
+          {siteConfig.motto[en ? "en" : "fr"]}
         </p>
       </div>
     </div>

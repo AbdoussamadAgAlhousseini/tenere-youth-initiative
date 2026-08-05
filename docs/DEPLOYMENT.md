@@ -50,10 +50,11 @@ credentials in production (the dev-login is disabled outside development).
 
 1. [Google Cloud Console](https://console.cloud.google.com/apis/credentials) →
    **Create Credentials → OAuth client ID → Web application**.
-2. **Authorized redirect URI**:
-   `https://<your-domain>/api/auth/callback/google`
-   (add `https://<project>.vercel.app/api/auth/callback/google` too if you use
-   the default Vercel domain).
+2. **Authorized redirect URIs** (production domain is `www.tenere-youth.org`):
+   `https://www.tenere-youth.org/api/auth/callback/google`
+   `https://tenere-youth.org/api/auth/callback/google`
+   (add `https://<project>.vercel.app/api/auth/callback/google` too if you also
+   use the default Vercel domain).
 3. Copy the **Client ID** and **Client secret** into the env vars below.
 
 ---

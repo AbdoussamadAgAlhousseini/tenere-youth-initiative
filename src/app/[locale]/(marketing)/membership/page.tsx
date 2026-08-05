@@ -3,7 +3,8 @@ import { Check } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { PageHeader } from "@/components/layout/page-header";
-import { GoogleSignIn } from "@/components/auth/google-sign-in";
+import { Link } from "@/lib/i18n/navigation";
+import { Button } from "@/components/ui/button";
 
 export async function generateMetadata({
   params,
@@ -46,10 +47,9 @@ export default async function MembershipPage({
         </div>
 
         <div className="bg-card flex flex-col justify-center gap-5 rounded-2xl border p-8 shadow-sm">
-          <GoogleSignIn
-            label={t("cta")}
-            callbackUrl={`/${locale}/dashboard`}
-          />
+          <Button asChild className="w-full">
+            <Link href="/volunteer">{t("cta")}</Link>
+          </Button>
           <p className="text-muted-foreground text-center text-xs">
             {t("note")}
           </p>

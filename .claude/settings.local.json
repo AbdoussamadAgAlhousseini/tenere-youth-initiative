@@ -82,7 +82,32 @@
       "Bash(git init *)",
       "Bash(git symbolic-ref *)",
       "Bash(git add *)",
-      "Bash(grep -E \"\\\\.env$\")"
+      "Bash(grep -E \"\\\\.env$\")",
+      "Bash(gh auth *)",
+      "Bash(vercel whoami *)",
+      "Bash(echo \"credential helper: $\\(git config --global credential.helper || echo none\\)\")",
+      "Bash(gh repo *)",
+      "Bash(npx -y vercel@latest whoami --cache /private/tmp/claude-501/-Users-mac-Desktop-tenere/8243fcbb-5e69-4e59-8c40-40426c66744e/scratchpad/npmcache)",
+      "Bash(export npm_config_cache=/private/tmp/claude-501/-Users-mac-Desktop-tenere/8243fcbb-5e69-4e59-8c40-40426c66744e/scratchpad/npmcache)",
+      "Bash(npx -y vercel@latest whoami)",
+      "Bash(openssl rand *)",
+      "Bash(npx -y vercel@latest link --yes --project tenere-youth-initiative)",
+      "Bash(npx -y vercel@latest env add NEXT_PUBLIC_SITE_URL production)",
+      "Bash(npx -y vercel@latest --prod --yes)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} -> %{redirect_url}\\\\n\" https://tenere-youth-initiative.vercel.app/)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}, %{size_download} bytes\\\\n\" https://tenere-youth-initiative.vercel.app/fr)",
+      "Bash(curl -s https://tenere-youth-initiative.vercel.app/fr)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" https://tenere-youth-initiative.vercel.app/robots.txt)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" https://tenere-youth-initiative.vercel.app/sitemap.xml)",
+      "Bash(echo \"== add apex ==\")",
+      "Bash(npx -y vercel@latest domains add tenere-youth.org tenere-youth-initiative)",
+      "Bash(npx -y vercel@latest domains add www.tenere-youth.org tenere-youth-initiative)",
+      "Bash(npx -y vercel@latest domains inspect tenere-youth.org)",
+      "Bash(npx -y vercel@latest ls tenere-youth-initiative)",
+      "Bash(npx -y vercel@latest inspect tenere-youth-initiative-ltfs90b01-akal1.vercel.app)",
+      "Bash(npx -y vercel@latest inspect --logs tenere-youth-initiative-ltfs90b01-akal1.vercel.app)",
+      "Bash(git commit -q -m ' *)",
+      "Bash(git push *)"
     ]
   }
 }
