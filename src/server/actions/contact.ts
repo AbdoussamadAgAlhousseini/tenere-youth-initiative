@@ -3,7 +3,17 @@
 import { db } from "@/server/db";
 import { contactSchema } from "@/lib/validations";
 import { getClientIp, rateLimit } from "@/lib/rate-limit";
+import { sendMail } from "@/lib/email";
 import type { ActionState } from "./newsletter";
+
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
 
 /** Record a contact message (honeypot + rate limited). */
 export async function sendContactMessage(
@@ -35,6 +45,22 @@ export async function sendContactMessage(
   try {
     const { name, email, subject, message } = parsed.data;
     await db.contactMessage.create({ data: { name, email, subject, message } });
+
+    // Best-effort email notification (never fails the submission).
+    try {
+      await sendMail({
+        subject: `Nouveau message de contact : ${subject}`,
+        replyTo: email,
+        text: `Nom : ${name}\nEmail : ${email}\nSujet : ${subject}\n\n${message}`,
+        html: `<p><strong>Nom :</strong> ${escapeHtml(name)}<br/>
+<strong>Email :</strong> ${escapeHtml(email)}<br/>
+<strong>Sujet :</strong> ${escapeHtml(subject)}</p>
+<p style="white-space:pre-wrap">${escapeHtml(message)}</p>`,
+      });
+    } catch {
+      // ignore email errors — the message is already stored
+    }
+
     return { status: "success" };
   } catch {
     return { status: "error", message: "server_error" };

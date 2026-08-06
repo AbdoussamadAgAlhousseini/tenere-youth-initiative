@@ -130,7 +130,13 @@
       "Bash(dig +short MX tenere-youth.org @8.8.8.8)",
       "Bash(npx -y vercel@latest dns add tenere-youth.org \"zmail._domainkey\" TXT 'v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCdo322O/fKetYNR5mOK8kaINgoME46rsESP6Qs2NbP/1q3JAFE77lRbDLpqfrZDm/+NUWcHmGB2JUHUXlpk4xjNHMT5QDMVKpyLBYx5XhsHSYLAYsqXXhljYlMIca0ceQH7qUM2jvhuxQiF3j8RYEaqtpZ1NfnT2jFZOCATXc91QIDAQAB')",
       "Bash(dig +short TXT zmail._domainkey.tenere-youth.org @8.8.8.8)",
-      "Bash(dig +short TXT zmail._domainkey.tenere-youth.org @1.1.1.1)"
+      "Bash(dig +short TXT zmail._domainkey.tenere-youth.org @1.1.1.1)",
+      "Bash(curl -s https://www.tenere-youth.org/fr/contact)",
+      "Bash(curl -s https://www.tenere-youth.org/fr)",
+      "Bash(node -e \"require\\('nodemailer'\\); console.log\\('nodemailer OK', require\\('nodemailer/package.json'\\).version\\)\")",
+      "Bash(node -e \"console.log\\('nodemailer', require\\('nodemailer/package.json'\\).version\\)\")",
+      "Bash(npm ls *)",
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\).on\\('end',\\(\\)=>{try{const j=JSON.parse\\(d\\);const v=j.vulnerabilities||{};for\\(const k of Object.keys\\(v\\)\\){console.log\\(v[k].severity, k\\)}}catch\\(e\\){console.log\\('parse err'\\)}}\\)\")"
     ]
   }
 }
