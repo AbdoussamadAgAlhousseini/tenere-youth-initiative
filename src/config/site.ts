@@ -7,12 +7,12 @@ export const siteConfig = {
     en: "The desert is not empty. No one crosses the Ténéré alone.",
   },
   email: "contact@tenere-youth.org",
+  // Fill these in once the pages exist. Empty channels are hidden in the UI
+  // and excluded from structured data. WhatsApp is a full wa.me URL.
   social: {
-    facebook: "https://facebook.com/tenereyouth",
-    instagram: "https://instagram.com/tenereyouth",
-    linkedin: "https://linkedin.com/company/tenereyouth",
-    x: "https://x.com/tenereyouth",
-    youtube: "https://youtube.com/@tenereyouth",
+    linkedin: "",
+    facebook: "",
+    whatsapp: "",
   },
 } as const;
 

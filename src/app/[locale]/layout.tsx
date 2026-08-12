@@ -92,7 +92,7 @@ export default async function LocaleLayout({
       contactType: "customer support",
       availableLanguage: ["French", "English"],
     },
-    sameAs: Object.values(siteConfig.social),
+    sameAs: Object.values(siteConfig.social).filter(Boolean),
   };
 
   return (

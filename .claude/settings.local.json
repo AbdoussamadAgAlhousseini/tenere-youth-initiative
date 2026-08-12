@@ -146,7 +146,9 @@
       "Bash(curl -s -o /dev/null -w \"/fr/privacy -> %{http_code}\\\\n\" https://www.tenere-youth.org/fr/privacy)",
       "Bash(curl -s https://www.tenere-youth.org/fr/privacy)",
       "Bash(curl -s -o /dev/null -w '/fr/terms -> %{http_code}\\\\n' https://www.tenere-youth.org/fr/terms)",
-      "Bash(curl -s https://www.tenere-youth.org/fr/terms)"
+      "Bash(curl -s https://www.tenere-youth.org/fr/terms)",
+      "Bash(curl -s __TRACKED_VAR__/fr)",
+      "Bash(npx -y vercel@latest dns add tenere-youth.org \"@\" TXT \"google-site-verification=-Atf74ViPUJNoh9EB6utpgjqWL38p1nvyLjEF9sQQdQ\")"
     ]
   }
 }
