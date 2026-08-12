@@ -141,7 +141,8 @@
       "Bash(curl -s -o /dev/null -w \"/fr/contact -> HTTP %{http_code}\\\\n\" https://www.tenere-youth.org/fr/contact)",
       "Bash(mkdir -p ~/Desktop/candidature/me ~/Desktop/candidature/TYI)",
       "Read(//Users/mac/Desktop/Candidature/**)",
-      "Bash(curl -s https://www.tenere-youth.org/fr/about)"
+      "Bash(curl -s https://www.tenere-youth.org/fr/about)",
+      "Bash(node -e 'const m=require\\(\"./messages/fr.json\"\\); console.log\\(JSON.stringify\\(m.pages.legal, null, 2\\)\\)')"
     ]
   }
 }
