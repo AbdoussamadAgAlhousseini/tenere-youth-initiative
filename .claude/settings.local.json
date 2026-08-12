@@ -136,7 +136,12 @@
       "Bash(node -e \"require\\('nodemailer'\\); console.log\\('nodemailer OK', require\\('nodemailer/package.json'\\).version\\)\")",
       "Bash(node -e \"console.log\\('nodemailer', require\\('nodemailer/package.json'\\).version\\)\")",
       "Bash(npm ls *)",
-      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\).on\\('end',\\(\\)=>{try{const j=JSON.parse\\(d\\);const v=j.vulnerabilities||{};for\\(const k of Object.keys\\(v\\)\\){console.log\\(v[k].severity, k\\)}}catch\\(e\\){console.log\\('parse err'\\)}}\\)\")"
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\).on\\('end',\\(\\)=>{try{const j=JSON.parse\\(d\\);const v=j.vulnerabilities||{};for\\(const k of Object.keys\\(v\\)\\){console.log\\(v[k].severity, k\\)}}catch\\(e\\){console.log\\('parse err'\\)}}\\)\")",
+      "Bash(curl -s -o /dev/null -w \"/fr -> HTTP %{http_code}\\\\n\" https://www.tenere-youth.org/fr)",
+      "Bash(curl -s -o /dev/null -w \"/fr/contact -> HTTP %{http_code}\\\\n\" https://www.tenere-youth.org/fr/contact)",
+      "Bash(mkdir -p ~/Desktop/candidature/me ~/Desktop/candidature/TYI)",
+      "Read(//Users/mac/Desktop/Candidature/**)",
+      "Bash(curl -s https://www.tenere-youth.org/fr/about)"
     ]
   }
 }
