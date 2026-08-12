@@ -38,13 +38,14 @@ export async function generateMetadata({
     description: t("description"),
     alternates: {
       canonical: `/${locale}`,
-      languages: { fr: "/fr", en: "/en" },
+      languages: { fr: "/fr", en: "/en", "x-default": "/fr" },
       types: {
         "application/rss+xml": `${siteConfig.url}/feed.xml`,
       },
     },
     openGraph: {
       type: "website",
+      url: `${siteConfig.url}/${locale}`,
       siteName: siteConfig.name,
       title: t("title"),
       description: t("description"),
@@ -71,6 +72,28 @@ export default async function LocaleLayout({
   }
   setRequestLocale(locale);
   const messages = await getMessages();
+  const tMeta = await getTranslations({ locale, namespace: "metadata" });
+
+  const organizationLd = {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    name: siteConfig.name,
+    alternateName: siteConfig.shortName,
+    url: `${siteConfig.url}/${locale}`,
+    logo: `${siteConfig.url}/icon.svg`,
+    email: siteConfig.email,
+    description: tMeta("description"),
+    slogan: locale === "en" ? siteConfig.motto.en : siteConfig.motto.fr,
+    foundingDate: "2017",
+    areaServed: "Sahel",
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: siteConfig.email,
+      contactType: "customer support",
+      availableLanguage: ["French", "English"],
+    },
+    sameAs: Object.values(siteConfig.social),
+  };
 
   return (
     <html
@@ -81,18 +104,7 @@ export default async function LocaleLayout({
       <body className="flex min-h-screen flex-col">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "NGO",
-              name: siteConfig.name,
-              url: siteConfig.url,
-              email: siteConfig.email,
-              slogan:
-                locale === "en" ? siteConfig.motto.en : siteConfig.motto.fr,
-              sameAs: Object.values(siteConfig.social),
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd) }}
         />
         <NextIntlClientProvider messages={messages}>
           <Providers>

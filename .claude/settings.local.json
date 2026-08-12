@@ -144,7 +144,9 @@
       "Bash(curl -s https://www.tenere-youth.org/fr/about)",
       "Bash(node -e 'const m=require\\(\"./messages/fr.json\"\\); console.log\\(JSON.stringify\\(m.pages.legal, null, 2\\)\\)')",
       "Bash(curl -s -o /dev/null -w \"/fr/privacy -> %{http_code}\\\\n\" https://www.tenere-youth.org/fr/privacy)",
-      "Bash(curl -s https://www.tenere-youth.org/fr/privacy)"
+      "Bash(curl -s https://www.tenere-youth.org/fr/privacy)",
+      "Bash(curl -s -o /dev/null -w '/fr/terms -> %{http_code}\\\\n' https://www.tenere-youth.org/fr/terms)",
+      "Bash(curl -s https://www.tenere-youth.org/fr/terms)"
     ]
   }
 }

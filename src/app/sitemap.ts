@@ -32,7 +32,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const add = (path: string, priority = 0.7) => {
     // One URL per locale, with hreflang alternates.
-    const languages: Record<string, string> = {};
+    const languages: Record<string, string> = {
+      "x-default": `${base}/${routing.defaultLocale}${path}`,
+    };
     for (const locale of routing.locales) {
       languages[locale] = `${base}/${locale}${path}`;
     }
