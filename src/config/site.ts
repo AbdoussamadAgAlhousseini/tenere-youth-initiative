@@ -12,7 +12,7 @@ export const siteConfig = {
   social: {
     linkedin: "https://www.linkedin.com/company/tenere-youth-initiative/",
     facebook: "https://www.facebook.com/profile.php?id=61593244437131",
-    whatsapp: "",
+    whatsapp: "https://wa.me/22378504914",
   },
 } as const;
 
