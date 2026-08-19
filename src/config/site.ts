@@ -10,7 +10,7 @@ export const siteConfig = {
   // Fill these in once the pages exist. Empty channels are hidden in the UI
   // and excluded from structured data. WhatsApp is a full wa.me URL.
   social: {
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/company/tenere-youth-initiative/",
     facebook: "",
     whatsapp: "",
   },

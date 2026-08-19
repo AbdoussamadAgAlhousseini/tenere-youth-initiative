@@ -168,7 +168,8 @@
       "Bash(echo \"== any image modified in the last 90 min, across likely locations ==\" *)",
       "Bash(file public/logo*)",
       "Bash(git rm *)",
-      "Bash(echo \"exit: $?\")"
+      "Bash(echo \"exit: $?\")",
+      "Bash(git fetch *)"
     ]
   }
 }
