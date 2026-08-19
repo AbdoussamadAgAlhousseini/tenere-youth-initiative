@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { PageHeader } from "@/components/layout/page-header";
 import { getUpcomingEvents } from "@/server/repositories/misc";
 import { formatDate } from "@/lib/utils";
+import { localeAlternates } from "@/lib/i18n/metadata";
 
 export const revalidate = 30;
 
@@ -17,7 +18,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "pages.events" });
-  return { title: t("title"), description: t("intro") };
+  return {
+    title: t("title"),
+    description: t("intro"),
+    alternates: localeAlternates(locale, "/events"),
+  };
 }
 
 const typeTone: Record<string, string> = {

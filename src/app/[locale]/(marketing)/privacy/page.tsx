@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { PageHeader } from "@/components/layout/page-header";
 import { siteConfig } from "@/config/site";
+import { localeAlternates } from "@/lib/i18n/metadata";
 
 export async function generateMetadata({
   params,
@@ -17,6 +18,7 @@ export async function generateMetadata({
       locale === "en"
         ? "How Tenere Youth Initiative collects, uses and protects your personal data."
         : "Comment Tenere Youth Initiative collecte, utilise et protège vos données personnelles.",
+    alternates: localeAlternates(locale, "/privacy"),
   };
 }
 

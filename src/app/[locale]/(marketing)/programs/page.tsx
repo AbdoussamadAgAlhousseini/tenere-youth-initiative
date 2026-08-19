@@ -4,6 +4,7 @@ import { getLocale, getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHeader } from "@/components/layout/page-header";
 import { ProgramCard } from "@/components/cards/program-card";
 import { getPrograms } from "@/server/repositories/programs";
+import { localeAlternates } from "@/lib/i18n/metadata";
 
 export const revalidate = 30;
 
@@ -14,7 +15,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "pages.programs" });
-  return { title: t("title"), description: t("intro") };
+  return {
+    title: t("title"),
+    description: t("intro"),
+    alternates: localeAlternates(locale, "/programs"),
+  };
 }
 
 export default async function ProgramsPage({

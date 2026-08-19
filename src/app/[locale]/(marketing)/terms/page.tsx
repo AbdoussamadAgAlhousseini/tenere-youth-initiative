@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHeader } from "@/components/layout/page-header";
 import { Link } from "@/lib/i18n/navigation";
 import { siteConfig } from "@/config/site";
+import { localeAlternates } from "@/lib/i18n/metadata";
 
 export async function generateMetadata({
   params,
@@ -18,6 +19,7 @@ export async function generateMetadata({
       locale === "en"
         ? "The terms that govern your use of the Tenere Youth Initiative website."
         : "Les conditions régissant votre utilisation du site de Tenere Youth Initiative.",
+    alternates: localeAlternates(locale, "/terms"),
   };
 }
 

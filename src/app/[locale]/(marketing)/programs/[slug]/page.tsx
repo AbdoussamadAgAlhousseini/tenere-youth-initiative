@@ -13,6 +13,7 @@ import {
 } from "@/server/repositories/programs";
 import { routing } from "@/lib/i18n/routing";
 import { formatDate } from "@/lib/utils";
+import { localeAlternates } from "@/lib/i18n/metadata";
 
 export const revalidate = 30;
 
@@ -35,6 +36,7 @@ export async function generateMetadata({
   return {
     title: isEn ? program.titleEn : program.titleFr,
     description: isEn ? program.summaryEn : program.summaryFr,
+    alternates: localeAlternates(locale, `/programs/${slug}`),
   };
 }
 

@@ -7,6 +7,7 @@ import {
   type GalleryItemDTO,
 } from "@/components/gallery/gallery-grid";
 import { getGalleryItems } from "@/server/repositories/misc";
+import { localeAlternates } from "@/lib/i18n/metadata";
 
 export const revalidate = 30;
 
@@ -17,7 +18,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "pages.gallery" });
-  return { title: t("title"), description: t("intro") };
+  return {
+    title: t("title"),
+    description: t("intro"),
+    alternates: localeAlternates(locale, "/gallery"),
+  };
 }
 
 export default async function GalleryPage({
