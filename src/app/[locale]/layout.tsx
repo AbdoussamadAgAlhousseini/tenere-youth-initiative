@@ -80,7 +80,7 @@ export default async function LocaleLayout({
     name: siteConfig.name,
     alternateName: siteConfig.shortName,
     url: `${siteConfig.url}/${locale}`,
-    logo: `${siteConfig.url}/icon.svg`,
+    logo: `${siteConfig.url}/logo.png`,
     email: siteConfig.email,
     description: tMeta("description"),
     slogan: locale === "en" ? siteConfig.motto.en : siteConfig.motto.fr,

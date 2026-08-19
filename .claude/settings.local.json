@@ -148,7 +148,27 @@
       "Bash(curl -s -o /dev/null -w '/fr/terms -> %{http_code}\\\\n' https://www.tenere-youth.org/fr/terms)",
       "Bash(curl -s https://www.tenere-youth.org/fr/terms)",
       "Bash(curl -s __TRACKED_VAR__/fr)",
-      "Bash(npx -y vercel@latest dns add tenere-youth.org \"@\" TXT \"google-site-verification=-Atf74ViPUJNoh9EB6utpgjqWL38p1nvyLjEF9sQQdQ\")"
+      "Bash(npx -y vercel@latest dns add tenere-youth.org \"@\" TXT \"google-site-verification=-Atf74ViPUJNoh9EB6utpgjqWL38p1nvyLjEF9sQQdQ\")",
+      "Read(//Users/mac/Downloads/**)",
+      "Bash(python3 -c \"import openpyxl; print\\('openpyxl', openpyxl.__version__\\)\")",
+      "Bash(pip install *)",
+      "Bash(markitdown Caisse_de_depenses_professionnelle_v2.xlsx)",
+      "Bash(python3 -m pip install openpyxl -q)",
+      "Bash(echo \"EXIT $?\")",
+      "Bash(python3)",
+      "Bash(python3 -c \"import olefile; print\\('olefile', olefile.__version__\\)\")",
+      "Read(//Users/mac/**)",
+      "Bash(python3 -c \"import PIL; from PIL import Image, ImageDraw, ImageFont; print\\('PIL OK', PIL.__version__\\)\")",
+      "Read(//System/Library/Fonts/Supplemental/**)",
+      "Bash(python3 /private/tmp/claude-501/-Users-mac-Desktop-tenere/76cdb6fd-6b70-4e16-8118-6b627d87f3f2/scratchpad/build_caisse.py)",
+      "Bash(python3 '/Users/mac/Library/Application Support/Claude/local-agent-mode-sessions/skills-plugin/73d5da4f-a97a-4e43-a273-4f3beddc40a1/28516d9f-8eba-47b2-ab2b-9d6c23e5c6ec/skills/xlsx/scripts/recalc.py' _caisse_tmp.xlsx 60)",
+      "Read(//Applications/**)",
+      "Read(//Applications/LibreOffice.app/Contents/MacOS/**)",
+      "Bash(node -e \"console.log\\('sharp', require\\('sharp/package.json'\\).version\\)\")",
+      "Bash(echo \"== any image modified in the last 90 min, across likely locations ==\" *)",
+      "Bash(file public/logo*)",
+      "Bash(git rm *)",
+      "Bash(echo \"exit: $?\")"
     ]
   }
 }

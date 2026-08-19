@@ -101,7 +101,7 @@ export default async function ArticlePage({
       publisher: {
         "@type": "Organization",
         name: siteConfig.name,
-        logo: { "@type": "ImageObject", url: `${siteConfig.url}/icon.svg` },
+        logo: { "@type": "ImageObject", url: `${siteConfig.url}/logo.png` },
       },
       mainEntityOfPage: canonical,
     },
