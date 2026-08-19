@@ -22,8 +22,6 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  // Keep nodemailer out of the bundler (it's a Node-only server dependency).
-  serverExternalPackages: ["nodemailer"],
   // Pin the tracing root to this project (a stray lockfile in the home dir
   // otherwise confuses Next.js workspace-root inference).
   outputFileTracingRoot: __dirname,

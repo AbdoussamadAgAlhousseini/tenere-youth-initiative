@@ -260,8 +260,7 @@
     },
     "legal": {
       "privacyTitle": "Politique de confidentialité",
-      "termsTitle": "Conditions d'utilisation",
-      "intro": "Cette page présente un contenu de démonstration à adapter avant la mise en ligne."
+      "termsTitle": "Conditions d'utilisation"
     }
   },
   "programThemes": {
@@ -280,13 +279,7 @@
     "intro": "Tenere Youth Initiative est née de la conviction que les jeunes des communautés pastorales et nomades portent en eux les solutions de demain.",
     "history": {
       "title": "Notre histoire",
-      "body": "Fondée par de jeunes leaders issus des zones pastorales du Sahel, l'organisation a grandi autour d'une idée simple : personne ne connaît mieux les défis d'un territoire que celles et ceux qui y vivent. De premiers ateliers communautaires à un réseau régional, nous avons construit pas à pas un mouvement de jeunesse enraciné et ambitieux.",
-      "milestones": {
-        "founding": "Création du collectif par de jeunes bénévoles pastoraux",
-        "programs": "Lancement des premiers programmes d'éducation et de leadership",
-        "network": "Extension à plusieurs pays du Sahel",
-        "today": "Un réseau régional au service des communautés"
-      }
+      "body": "Fondée par de jeunes leaders issus des zones pastorales du Sahel, l'organisation a grandi autour d'une idée simple : personne ne connaît mieux les défis d'un territoire que celles et ceux qui y vivent. De premiers ateliers communautaires à un réseau régional, nous avons construit pas à pas un mouvement de jeunesse enraciné et ambitieux."
     },
     "vision": {
       "title": "Notre vision",
@@ -299,10 +292,22 @@
     "values": {
       "title": "Nos valeurs",
       "items": {
-        "rooted": { "title": "Enracinement", "body": "Nous partons des savoirs et des réalités des communautés." },
-        "youth": { "title": "Jeunesse", "body": "Nous plaçons les jeunes au cœur de la décision et de l'action." },
-        "solidarity": { "title": "Solidarité", "body": "Personne ne traverse le Ténéré seul : nous avançons ensemble." },
-        "sustainability": { "title": "Durabilité", "body": "Nous agissons pour l'environnement et les générations futures." }
+        "rooted": {
+          "title": "Enracinement",
+          "body": "Nous partons des savoirs et des réalités des communautés."
+        },
+        "youth": {
+          "title": "Jeunesse",
+          "body": "Nous plaçons les jeunes au cœur de la décision et de l'action."
+        },
+        "solidarity": {
+          "title": "Solidarité",
+          "body": "Personne ne traverse le Ténéré seul : nous avançons ensemble."
+        },
+        "sustainability": {
+          "title": "Durabilité",
+          "body": "Nous agissons pour l'environnement et les générations futures."
+        }
       }
     }
   },
@@ -333,13 +338,6 @@
     "error": "Une erreur est survenue. Réessayez.",
     "invalid": "Adresse e-mail invalide ou consentement manquant.",
     "rateLimited": "Trop de tentatives. Patientez un instant."
-  },
-  "auth": {
-    "title": "Connexion",
-    "subtitle": "Accédez à votre espace membre Tenere Youth Initiative.",
-    "google": "Continuer avec Google",
-    "legal": "En continuant, vous acceptez nos conditions et notre",
-    "privacy": "politique de confidentialité"
   },
   "footer": {
     "tagline": "Renforcer le pouvoir des jeunes communautés pastorales et nomades.",
