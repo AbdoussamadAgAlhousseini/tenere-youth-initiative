@@ -173,7 +173,10 @@
       "Bash(curl -s -o /dev/null -w \"banner -> HTTP %{http_code}, %{size_download} bytes, %{content_type}\\\\n\" \"https://www.tenere-youth.org/linkedin-banner.png\")",
       "Bash(curl -s -o /dev/null -w \"fb banner -> HTTP %{http_code}, %{size_download} bytes\\\\n\" \"https://www.tenere-youth.org/facebook-banner.png\")",
       "Bash(node -e \"console.log\\('@vercel/analytics', require\\('@vercel/analytics/package.json'\\).version\\)\")",
-      "Bash(node -e \"const p=require\\('@vercel/analytics/package.json'\\); console.log\\(Object.keys\\(p.exports||{}\\).join\\(', '\\)\\)\")"
+      "Bash(node -e \"const p=require\\('@vercel/analytics/package.json'\\); console.log\\(Object.keys\\(p.exports||{}\\).join\\(', '\\)\\)\")",
+      "Bash(curl -s \"https://www.tenere-youth.org/fr\")",
+      "Bash(curl -s -o /dev/null -w \"/_vercel/insights/script.js -> %{http_code}\\\\n\" \"https://www.tenere-youth.org/_vercel/insights/script.js\")",
+      "Bash(node -e \"console.log\\('@vercel/speed-insights', require\\('@vercel/speed-insights/package.json'\\).version\\); const p=require\\('@vercel/speed-insights/package.json'\\); console.log\\('exports:', Object.keys\\(p.exports||{}\\).join\\(', '\\)\\)\")"
     ]
   }
 }
