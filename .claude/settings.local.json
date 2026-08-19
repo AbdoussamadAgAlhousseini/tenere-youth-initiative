@@ -169,7 +169,8 @@
       "Bash(file public/logo*)",
       "Bash(git rm *)",
       "Bash(echo \"exit: $?\")",
-      "Bash(git fetch *)"
+      "Bash(git fetch *)",
+      "Bash(curl -s -o /dev/null -w \"banner -> HTTP %{http_code}, %{size_download} bytes, %{content_type}\\\\n\" \"https://www.tenere-youth.org/linkedin-banner.png\")"
     ]
   }
 }
