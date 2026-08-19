@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
+import { Analytics } from "@vercel/analytics/next";
 import {
   getMessages,
   getTranslations,
@@ -116,6 +117,7 @@ export default async function LocaleLayout({
             <BackToTop />
           </Providers>
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );

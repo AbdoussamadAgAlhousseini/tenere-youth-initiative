@@ -170,7 +170,10 @@
       "Bash(git rm *)",
       "Bash(echo \"exit: $?\")",
       "Bash(git fetch *)",
-      "Bash(curl -s -o /dev/null -w \"banner -> HTTP %{http_code}, %{size_download} bytes, %{content_type}\\\\n\" \"https://www.tenere-youth.org/linkedin-banner.png\")"
+      "Bash(curl -s -o /dev/null -w \"banner -> HTTP %{http_code}, %{size_download} bytes, %{content_type}\\\\n\" \"https://www.tenere-youth.org/linkedin-banner.png\")",
+      "Bash(curl -s -o /dev/null -w \"fb banner -> HTTP %{http_code}, %{size_download} bytes\\\\n\" \"https://www.tenere-youth.org/facebook-banner.png\")",
+      "Bash(node -e \"console.log\\('@vercel/analytics', require\\('@vercel/analytics/package.json'\\).version\\)\")",
+      "Bash(node -e \"const p=require\\('@vercel/analytics/package.json'\\); console.log\\(Object.keys\\(p.exports||{}\\).join\\(', '\\)\\)\")"
     ]
   }
 }
