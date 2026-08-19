@@ -11,7 +11,7 @@ export const siteConfig = {
   // and excluded from structured data. WhatsApp is a full wa.me URL.
   social: {
     linkedin: "https://www.linkedin.com/company/tenere-youth-initiative/",
-    facebook: "",
+    facebook: "https://www.facebook.com/profile.php?id=61593244437131",
     whatsapp: "",
   },
 } as const;
