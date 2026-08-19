@@ -176,7 +176,10 @@
       "Bash(node -e \"const p=require\\('@vercel/analytics/package.json'\\); console.log\\(Object.keys\\(p.exports||{}\\).join\\(', '\\)\\)\")",
       "Bash(curl -s \"https://www.tenere-youth.org/fr\")",
       "Bash(curl -s -o /dev/null -w \"/_vercel/insights/script.js -> %{http_code}\\\\n\" \"https://www.tenere-youth.org/_vercel/insights/script.js\")",
-      "Bash(node -e \"console.log\\('@vercel/speed-insights', require\\('@vercel/speed-insights/package.json'\\).version\\); const p=require\\('@vercel/speed-insights/package.json'\\); console.log\\('exports:', Object.keys\\(p.exports||{}\\).join\\(', '\\)\\)\")"
+      "Bash(node -e \"console.log\\('@vercel/speed-insights', require\\('@vercel/speed-insights/package.json'\\).version\\); const p=require\\('@vercel/speed-insights/package.json'\\); console.log\\('exports:', Object.keys\\(p.exports||{}\\).join\\(', '\\)\\)\")",
+      "Bash(curl -s -o /dev/null -w \"/_vercel/speed-insights/script.js -> %{http_code}\\\\n\" \"https://www.tenere-youth.org/_vercel/speed-insights/script.js\")",
+      "Bash(curl -s -o /dev/null -w \"/_vercel/insights/script.js \\(analytics\\) -> %{http_code}\\\\n\" \"https://www.tenere-youth.org/_vercel/insights/script.js\")",
+      "Bash(npx -y vercel@latest projects ls)"
     ]
   }
 }
