@@ -15,6 +15,35 @@ function escapeHtml(value: string) {
     .replace(/'/g, "&#39;");
 }
 
+// SEO spam always pushes a promotional link plus ranking/indexing jargon.
+// Flagged messages are still stored (nothing lost) but don't trigger an email.
+const SPAM_PHRASES = [
+  "search index",
+  "search results",
+  "search engine",
+  "first page",
+  "seo",
+  "back link",
+  "backlink",
+  "ranking",
+  "rank higher",
+  "web traffic",
+  "list your",
+  "helpindex",
+  "index your",
+  "get listed",
+];
+
+function isLikelySpam(name: string, subject: string, message: string): boolean {
+  const text = `${name}\n${subject}\n${message}`.toLowerCase();
+  const hasLink =
+    /https?:\/\/|www\.|[a-z0-9-]+\.(com|org|net|io|xyz|info|biz|ru|top|online|site|shop|club|link)\b/i.test(
+      text,
+    );
+  const hasJargon = SPAM_PHRASES.some((p) => text.includes(p));
+  return hasLink && hasJargon;
+}
+
 /** Record a contact message (honeypot + rate limited). */
 export async function sendContactMessage(
   _prev: ActionState,
@@ -44,7 +73,14 @@ export async function sendContactMessage(
 
   try {
     const { name, email, subject, message } = parsed.data;
-    await db.contactMessage.create({ data: { name, email, subject, message } });
+    const spam = isLikelySpam(name, subject, message);
+    // Store everything; pre-mark spam as handled so it stays out of the way.
+    await db.contactMessage.create({
+      data: { name, email, subject, message, handled: spam },
+    });
+
+    // Skip the email notification for likely spam (still visible in admin).
+    if (spam) return { status: "success" };
 
     // Best-effort email notification (never fails the submission).
     try {
